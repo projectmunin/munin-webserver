@@ -10,7 +10,7 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
 
-        <link rel="stylesheet" href="<?php echo base_url(CSS.'bootstrap.min.css'); ?>">
+        <link rel="stylesheet" href="<?php echo base_url(CSS.'bootstrap-flatly.min.css'); ?>">
         <style>
             body {
                 padding-top: 50px;
