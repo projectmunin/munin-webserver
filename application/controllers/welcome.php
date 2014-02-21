@@ -20,7 +20,17 @@ class Welcome extends CI_Controller {
 	public function index()
 	{
 		$this->load->helper('url');
-		$this->load->view('welcome_message');
+
+		$navbar = $this->load->view('elements/navbar',array(),true);
+		$content = $this->load->view('home',array(),true);
+
+		$template_args = array(
+			'title' => "Project Munin",
+			'navbar' => $navbar,
+			'content' => $content,
+		);
+
+		$this->load->view('templates/base',$template_args);
 	}
 }
 
