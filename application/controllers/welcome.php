@@ -20,6 +20,9 @@ class Welcome extends CI_Controller {
 	public function index()
 	{
 		$this->load->helper('url');
+		$this->load->helper('language');
+
+		$this->lang->load('home');
 
 		$navbar = $this->load->view('elements/navbar',array(),true);
 		$content = $this->load->view('home',array(),true);
