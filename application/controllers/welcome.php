@@ -19,15 +19,25 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
+		$this->load->model('Lecture_note_library', '', true);
+
+
 		$this->load->helper('url');
 		$this->load->helper('language');
 
 		$this->lang->load('home');
 
 		$navbar = $this->load->view('elements/navbar',array(),true);
-		$content = $this->load->view('home',array(),true);
 
-		$template_args = array(
+		$lecture_notes = $this->Lecture_note_library->get_latest_notes();
+		$content_args = array
+		(
+			'lecture_notes' => $lecture_notes,
+		);
+		$content = $this->load->view('home',$content_args,true);
+
+		$template_args = array
+		(
 			'title' => "Project Munin",
 			'navbar' => $navbar,
 			'content' => $content,

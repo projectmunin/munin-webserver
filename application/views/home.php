@@ -9,6 +9,18 @@
 
     <div class="container">
       <!-- Example row of columns -->
+
+      <div class="row">
+        <div class="col-xs-12">
+          <h1>Latest lecture notes</h1>
+          <?php var_dump($lecture_notes); ?>
+
+          <?php foreach($lecture_notes as $lecture_note): ?>
+
+            <img class="lecture-note-img" src="<?=LECTURE_NOTES.$lecture_note->image ?>" />
+          <?php endforeach; ?>
+        </div>
+      </div>
       <div class="row">
         <div class="col-lg-4">
           <h2>Heading</h2>

@@ -47,5 +47,7 @@ define('IMAGES','resources/img/');
 define('JS','resources/js/');
 define('CSS','resources/css/');
 
+define('LECTURE_NOTES','resources/lecture_notes/');
+
 /* End of file constants.php */
 /* Location: ./application/config/constants.php */
