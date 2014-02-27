@@ -2,6 +2,11 @@
    Author's custom styles
    ========================================================================== */
 
+body
+{
+	margin-top: 60px;
+}
+
 .lecture-note-img
 {
 	width: 100%;
