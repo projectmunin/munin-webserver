@@ -8,6 +8,11 @@ class Lecture_note_library extends CI_Model {
         parent::__construct();
     }
     
+    /**
+     * Get latest notes
+     * @param int $count 
+     * @return array with latest notes
+     */
     function get_latest_notes($count = 10)
     {
     	$this->db->select()->from('lecture_note')->limit(10)->order_by('time','desc');
