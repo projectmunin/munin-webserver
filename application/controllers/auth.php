@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Auth extends CI_Controller {
+class Auth extends MY_Controller {
 
 	function __construct()
 	{
@@ -741,14 +741,11 @@ class Auth extends CI_Controller {
 		}
 	}
 
-	function _render_page($view, $data=null, $render=false)
+	function _render_page($view, $data=null)
 	{
-
+		$this->template = 'auth';
 		$this->viewdata = (empty($data)) ? $this->data: $data;
-
-		$view_html = $this->load->view($view, $this->viewdata, $render);
-
-		if (!$render) return $view_html;
+		$this->_render($view, $this->viewdata);
 	}
 
 }

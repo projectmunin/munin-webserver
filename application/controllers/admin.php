@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Admin extends CI_Controller {
+class Admin extends MY_Controller {
 	function __construct()
 	{
 		parent::__construct();
@@ -22,21 +22,10 @@ class Admin extends CI_Controller {
 		}
 		else
 		{
-			$navbar = $this->load->view('elements/navbar',array(),true);
+			$this->title = "Project Munin - Admin";
+			$this->template = "admin";
 
-			$content_args = array
-			(
-			);
-			$content = $this->load->view('admin',$content_args,true);
-
-			$template_args = array
-			(
-				'title' => "Project Munin - Admin",
-				'navbar' => $navbar,
-				'content' => $content,
-			);
-
-			$this->load->view('templates/base',$template_args);
+			$this->_render("admin");
 		}
 	}
 }

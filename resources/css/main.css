@@ -12,3 +12,18 @@ body
 	width: 100%;
 	margin: 10px 0px;
 }
+
+body.auth
+{
+	background-color: #18bc9c;
+}
+
+#auth-content
+{
+	margin: 0px auto;
+	max-width: 500px;
+	width: 100%;
+	background-color: white;
+	border-radius: 10px;
+	padding: 40px;
+}

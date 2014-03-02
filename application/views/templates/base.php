@@ -14,13 +14,19 @@
 	<link rel="stylesheet" href="<?php echo base_url(CSS.'main.css'); ?>">
 
 	<script src="<?php echo base_url(JS.'vendor/modernizr-2.6.2-respond-1.1.0.min.js');?>"></script>
+
+	<?php foreach($css as $c): ?>
+		<link rel="stylesheet" href="<?php echo base_url().CSS.$c?>">
+	<?php endforeach; ?>
+
+	<?php foreach($fonts as $f): ?>
+		<link href="http://fonts.googleapis.com/css?family=<?php echo $f?>" rel="stylesheet" type="text/css">
+	<?php endforeach; ?>
 </head>
-<body>
+<body class="<?=$template ?>">
 	<!--[if lt IE 7]>
 		<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
 	<![endif]-->
-
-	<?=$navbar ?>
 
 	<?=$content ?>
 
