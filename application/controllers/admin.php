@@ -32,7 +32,7 @@ class Admin extends MY_Controller {
 		}
 	}
 
-	public function courses($code, $period, $show)
+	public function courses($code, $period, $show = "lectures")
 	{
 		if (!$this->ion_auth->logged_in())
 		{
@@ -50,9 +50,10 @@ class Admin extends MY_Controller {
 			$this->template = "admin";
 
 			$this->load->model('Lecture_note_library', '', true);
+			$this->data['course'] = $this->Lecture_note_library->get_course($code,$period);
 			$this->data['lectures'] = $this->Lecture_note_library->get_lectures($code,$period);
 
-			$this->_render("admin");
+			$this->_render("admin/lecture_list");
 		}
 	}
 }

@@ -21,11 +21,6 @@ class Lecture_note_library extends CI_Model {
 		return $query->result();
 	}
 
-	/**
-	 * Get all courses
-	 * @param int $count 
-	 * @return array with latest notes
-	 */
 	function get_all_courses()
 	{
 		//$this->db->select('name, period, code, count(lecture.id)')->from('course');
@@ -40,17 +35,20 @@ class Lecture_note_library extends CI_Model {
 		return $query->result();
 	}
 
-	/**
-	 * Get all courses
-	 * @param int $count 
-	 * @return array with latest notes
-	 */
-	function search_courses($searchstr)
+	function get_lectures($course_code, $course_period)
 	{
-		$this->db->select()->from('course')->limit(10);
+		$this->db->select()->from('lecture')->where('course_code', $course_code)->where('course_period', $course_period);
 		
 		$query = $this->db->get();
 		return $query->result();
+	}
+
+	function get_course($course_code, $course_period)
+	{
+		$this->db->select()->from('course')->where('code', $course_code)->where('period', $course_period);
+		
+		$query = $this->db->get();
+		return $query->row();//returns only the first row
 	}
 }
 

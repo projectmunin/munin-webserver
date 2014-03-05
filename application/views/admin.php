@@ -17,7 +17,7 @@
 							<td><?=$course->period ?></td>
 							<td><?=$course->name ?></td>
 							<td><?=$course->recorded_lectures ?></td>
-							<td><a href="<?=site_url('/admin/courses/'.$course->code.'/'.$course->period) ?>">List lectures</a> <a href="<?=site_url('/admin/courses/'.$course->code.'/'.$course->period).'/delete' ?>">Delete course</a></td>
+							<td><a href="<?=site_url('/admin/courses/'.$course->code.'/'.$course->period) ?>">List lectures</a> <a href="<?=site_url('/admin/courses/'.$course->code.'/'.$course->period.'/delete') ?>">Delete course</a></td>
 						<?php endforeach; ?>
 					</tbody>
 				</table>
