@@ -71,13 +71,16 @@ class Auth extends MY_Controller {
 				//if the login is successful
 				//redirect them back to the home page
 				$this->session->set_flashdata('message', $this->ion_auth->messages());
-				redirect('/', 'refresh');
+				$url = '/';
+				$url = $this->session->flashdata('return_to') ? $this->session->flashdata('return_to') : $url;
+				redirect($url, 'refresh');
 			}
 			else
 			{
 				//if the login was un-successful
 				//redirect them back to the login page
 				$this->session->set_flashdata('message', $this->ion_auth->errors());
+				$this->session->keep_flashdata('return_to');
 				redirect('auth/login', 'refresh'); //use redirects instead of loading views for compatibility with MY_Controller libraries
 			}
 		}
@@ -97,6 +100,14 @@ class Auth extends MY_Controller {
 				'type' => 'password',
 			);
 
+			if($this->input->get('return_to'))
+			{
+				$this->session->set_flashdata('return_to', $this->input->get('return_to'));
+			}
+			else
+			{
+				$this->session->keep_flashdata('return_to');
+			}
 			$this->_render_page('auth/login', $this->data);
 		}
 	}
