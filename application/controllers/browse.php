@@ -26,5 +26,5 @@ class Browse extends MY_Controller {
 	}
 }
 
-/* End of file welcome.php */
-/* Location: ./application/controllers/welcome.php */
+/* End of file browse.php */
+/* Location: ./application/controllers/browse.php */
