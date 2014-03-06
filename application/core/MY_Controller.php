@@ -51,7 +51,8 @@ class MY_Controller extends CI_Controller{
 		$template_args["keywords"] = $this->keywords;
 		$template_args["author"] = $this->author;
 
-		$body_args["navbar"] = $this->load->view("elements/navbar",array(),true);
+		$body_args["header"] = $this->load->view("elements/navbar",array(),true);
+		$body_args["footer"] = $this->load->view("elements/footer",array(),true);
 		$body_args["content"] = $this->load->view($view,array_merge($this->data,$template_args),true);
 
 		$template_args["template"] = $this->template;

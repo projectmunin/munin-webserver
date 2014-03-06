@@ -8,8 +8,6 @@
 </div>
 
 <div class="container">
-	<!-- Example row of columns -->
-
 	<div class="row">
 		<div class="col-xs-12">
 			<h1>Latest lecture notes</h1>
@@ -38,10 +36,4 @@
 			<p><a class="btn btn-default" href="#">View details &raquo;</a></p>
 		</div>
 	</div>
-
-	<hr>
-
-	<footer>
-		<p>&copy; Company 2013</p>
-	</footer>
-		</div> <!-- /container -->
+</div> <!-- /container -->

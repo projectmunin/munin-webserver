@@ -35,6 +35,29 @@ class Lecture_note_library extends CI_Model {
 		return $query->result();
 	}
 
+	function get_latest_lectures($count = 10)
+	{
+		/*
+		$query = $this->db->query('
+				SELECT finished, lecture.time AS time, course_code, course_period, lecture_hall_name, image
+				FROM lecture
+				LEFT OUTER JOIN lecture_note ON lecture.id = lecture_note.lecture_id
+				GROUP BY lecture.id
+				ORDER BY lecture.time, lecture_note.time DESC
+				LIMIT ?
+			',$count);
+		return $query->result();
+		*/
+		//TODO might want to make this in one query
+		$lectures = $this->db->select()->from('lecture')->get()->result();
+		foreach ($lectures as $lecture) {
+			$lecture->lecture_note = $this->db->select()->from('lecture_note')->where('lecture_id', $lecture->id)->order_by('time','desc')->get()->row();
+			$lecture->course = $this->db->select()->from('course')->where('code', $lecture->course_code)->where('period', $lecture->course_period)->get()->row();
+		}
+		
+		return $lectures;
+	}
+
 	function get_lectures($course_code, $course_period)
 	{
 		$this->db->select()->from('lecture')->where('course_code', $course_code)->where('course_period', $course_period);
