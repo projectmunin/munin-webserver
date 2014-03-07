@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Browse extends MY_Controller {
+class Course extends MY_Controller {
 
 	function __construct()
 	{
@@ -12,24 +12,32 @@ class Browse extends MY_Controller {
 		$this->lang->load('home');
 	}
 
-	public function index()
+	public function index($code = FALSE, $period = FALSE)
 	{
-		$lectures = $this->Lecture_note_library->get_latest_lectures();
+		$course = $this->Lecture_note_library->get_course($code,$period);
+
+		if(!$course)
+		{
+			return show_error('Could not get info for course with code '.$code.' and period'.$period);
+		}
+
+		$lectures = $this->Lecture_note_library->get_lectures($code,$period);
+
 		$list_data = array
 		(
 			'lectures' => $lectures,
 		);
-
 		$lecture_list = $this->load->view("elements/lecture_list",$list_data,true);
 
 		$this->data = array
 		(
+			'course' => $course,
 			'lecture_list' => $lecture_list,
 		);
 
-		$this->title = "Project Munin";
+		$this->title = "Project Munin Course".$course->name;
 
-		$this->_render("browse");
+		$this->_render("course");
 	}
 }
 

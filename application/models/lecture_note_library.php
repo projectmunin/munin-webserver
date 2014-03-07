@@ -60,10 +60,14 @@ class Lecture_note_library extends CI_Model {
 
 	function get_lectures($course_code, $course_period)
 	{
-		$this->db->select()->from('lecture')->where('course_code', $course_code)->where('course_period', $course_period);
+		$lectures = $this->db->select()->from('lecture')->where('course_code', $course_code)->where('course_period', $course_period)->get()->result();
 		
-		$query = $this->db->get();
-		return $query->result();
+		foreach ($lectures as $lecture) {
+			$lecture->lecture_note = $this->db->select()->from('lecture_note')->where('lecture_id', $lecture->id)->order_by('time','desc')->get()->row();
+			$lecture->course = $this->db->select()->from('course')->where('code', $lecture->course_code)->where('period', $lecture->course_period)->get()->row();
+		}
+
+		return $lectures;
 	}
 
 	function get_course($course_code, $course_period)
