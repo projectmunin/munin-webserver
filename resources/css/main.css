@@ -69,3 +69,8 @@ body.auth
 	font-size: 18px;
 	color: gray;
 }
+
+.lecture-row-course-name
+{
+	display: block;
+}
