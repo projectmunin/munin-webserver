@@ -15,7 +15,7 @@
 
 			<?php foreach($lecture_notes as $lecture_note): ?>
 
-				<img class="lecture-note-img" src="<?=LECTURE_NOTES.$lecture_note->image ?>" />
+				<img class="lecture-note-img" src="<?=base_url(LECTURE_NOTES.$lecture_note->image) ?>" />
 			<?php endforeach; ?>
 		</div>
 	</div>

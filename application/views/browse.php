@@ -10,7 +10,7 @@
 				<div class="lecture-row">
 					<div class="lecture-thumb">
 						<a href="<?=site_url('lecture/'.$lecture->id) ?>">
-							<img class="lecture-thumb-img" src="<?=LECTURE_NOTES.$lecture->lecture_note->image ?>" />
+							<img class="lecture-thumb-img" src="<?=base_url(LECTURE_NOTES.$lecture->lecture_note->image) ?>" />
 						</a>
 					</div>
 					<h3><?=$lecture->course->name ?></h3>
