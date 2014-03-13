@@ -27,7 +27,9 @@ INSERT INTO camera_units
 VALUES
 (
 	'cam1',
-	'EF'
+	'EF',
+	'192.168.0.1',
+	'1234567890+0'
 );
 
 INSERT INTO lecture_notes
