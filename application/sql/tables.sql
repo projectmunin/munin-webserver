@@ -1,4 +1,4 @@
-CREATE TABLE course
+CREATE TABLE courses
 (
 	name VARCHAR(255) NOT NULL,
 	period VARCHAR(255) NOT NULL,
@@ -6,13 +6,13 @@ CREATE TABLE course
 	PRIMARY KEY(code,period)
 );
 
-CREATE TABLE lecture_hall
+CREATE TABLE lecture_halls
 (
 	name VARCHAR(255) NOT NULL,
 	PRIMARY KEY(name)
 );
 
-CREATE TABLE lecture
+CREATE TABLE lectures
 (
 	finished BOOLEAN NOT NULL,
 	time DATETIME NOT NULL,
@@ -21,19 +21,19 @@ CREATE TABLE lecture
 	lecture_hall_name VARCHAR(255) NOT NULL,
 	id INT NOT NULL AUTO_INCREMENT,
 	PRIMARY KEY(id),
-	FOREIGN KEY(course_code,course_period) REFERENCES course(code,period),
-	FOREIGN KEY(lecture_hall_name) REFERENCES lecture_hall(name)
+	FOREIGN KEY(course_code,course_period) REFERENCES courses(code,period),
+	FOREIGN KEY(lecture_hall_name) REFERENCES lecture_halls(name)
 );
 
-CREATE TABLE camera_unit
+CREATE TABLE camera_units
 (
 	name VARCHAR(255) NOT NULL,
 	lecture_hall_name VARCHAR(255) NOT NULL,
 	PRIMARY KEY(name),
-	FOREIGN KEY(lecture_hall_name) REFERENCES lecture_hall(name)
+	FOREIGN KEY(lecture_hall_name) REFERENCES lecture_halls(name)
 );
 
-CREATE TABLE lecture_note
+CREATE TABLE lecture_notes
 (
 	image VARCHAR(255) NOT NULL,
 	time DATETIME NOT NULL,
@@ -42,6 +42,6 @@ CREATE TABLE lecture_note
 	camera_unit_name VARCHAR(255) NOT NULL,
 	id INT NOT NULL AUTO_INCREMENT,
 	PRIMARY KEY(id),
-	FOREIGN KEY(camera_unit_name) REFERENCES camera_unit(name),
-	FOREIGN KEY(lecture_id) REFERENCES lecture(id)
+	FOREIGN KEY(camera_unit_name) REFERENCES camera_units(name),
+	FOREIGN KEY(lecture_id) REFERENCES lectures(id)
 );

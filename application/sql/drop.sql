@@ -1,1 +1,1 @@
-DROP TABLE lecture_note,camera_unit,lecture,lecture_hall,course;
+DROP TABLE lecture_notes,camera_units,lectures,lecture_halls,courses;

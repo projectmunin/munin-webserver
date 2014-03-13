@@ -1,4 +1,4 @@
-INSERT INTO course
+INSERT INTO courses
 VALUES
 (
 	'Databases',
@@ -6,13 +6,13 @@ VALUES
 	'DIT620'
 );
 
-INSERT INTO lecture_hall
+INSERT INTO lecture_halls
 VALUES
 (
 	'EF'
 );
 
-INSERT INTO lecture
+INSERT INTO lectures
 VALUES
 (
 	'1',
@@ -23,14 +23,14 @@ VALUES
 	NULL
 );
 
-INSERT INTO camera_unit
+INSERT INTO camera_units
 VALUES
 (
 	'cam1',
 	'EF'
 );
 
-INSERT INTO lecture_note
+INSERT INTO lecture_notes
 VALUES
 (
 	'DIT620/VT14/2014/02/24/1.jpg',
@@ -41,7 +41,7 @@ VALUES
 	NULL
 );
 
-INSERT INTO lecture_note
+INSERT INTO lecture_notes
 VALUES
 (
 	'DIT620/VT14/2014/02/24/2.jpg',

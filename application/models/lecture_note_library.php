@@ -15,7 +15,7 @@ class Lecture_note_library extends CI_Model {
 	 */
 	function get_latest_notes($count = 10)
 	{
-		$this->db->select()->from('lecture_note')->limit($count)->order_by('time','desc');
+		$this->db->select()->from('lecture_notes')->limit($count)->order_by('time','desc');
 		
 		$query = $this->db->get();
 		return $query->result();
@@ -25,10 +25,10 @@ class Lecture_note_library extends CI_Model {
 	{
 		//$this->db->select('name, period, code, count(lecture.id)')->from('course');
 		$query = $this->db->query('
-				SELECT name, period, code, COUNT( lecture.id ) recorded_lectures
-				FROM course
-				LEFT OUTER JOIN lecture ON course.period = lecture.course_period
-				AND course.code = lecture.course_code
+				SELECT name, period, code, COUNT( lectures.id ) recorded_lectures
+				FROM courses
+				LEFT OUTER JOIN lectures ON courses.period = lectures.course_period
+				AND courses.code = lectures.course_code
 				GROUP BY period, code
 			');
 		//$query = $this->db->get();
@@ -49,10 +49,10 @@ class Lecture_note_library extends CI_Model {
 		return $query->result();
 		*/
 		//TODO might want to make this in one query
-		$lectures = $this->db->select()->from('lecture')->get()->result();
+		$lectures = $this->db->select()->from('lectures')->get()->result();
 		foreach ($lectures as $lecture) {
-			$lecture->lecture_note = $this->db->select()->from('lecture_note')->where('lecture_id', $lecture->id)->order_by('time','desc')->get()->row();
-			$lecture->course = $this->db->select()->from('course')->where('code', $lecture->course_code)->where('period', $lecture->course_period)->get()->row();
+			$lecture->lecture_note = $this->db->select()->from('lecture_notes')->where('lecture_id', $lecture->id)->order_by('time','desc')->get()->row();
+			$lecture->course = $this->db->select()->from('courses')->where('code', $lecture->course_code)->where('period', $lecture->course_period)->get()->row();
 		}
 		
 		return $lectures;
@@ -60,11 +60,11 @@ class Lecture_note_library extends CI_Model {
 
 	function get_lectures($course_code, $course_period)
 	{
-		$lectures = $this->db->select()->from('lecture')->where('course_code', $course_code)->where('course_period', $course_period)->get()->result();
+		$lectures = $this->db->select()->from('lectures')->where('course_code', $course_code)->where('course_period', $course_period)->get()->result();
 		
 		foreach ($lectures as $lecture) {
-			$lecture->lecture_note = $this->db->select()->from('lecture_note')->where('lecture_id', $lecture->id)->order_by('time','desc')->get()->row();
-			$lecture->course = $this->db->select()->from('course')->where('code', $lecture->course_code)->where('period', $lecture->course_period)->get()->row();
+			$lecture->lecture_note = $this->db->select()->from('lecture_notes')->where('lecture_id', $lecture->id)->order_by('time','desc')->get()->row();
+			$lecture->course = $this->db->select()->from('courses')->where('code', $lecture->course_code)->where('period', $lecture->course_period)->get()->row();
 		}
 
 		return $lectures;
@@ -72,7 +72,7 @@ class Lecture_note_library extends CI_Model {
 
 	function get_course($course_code, $course_period)
 	{
-		$this->db->select()->from('course')->where('code', $course_code)->where('period', $course_period);
+		$this->db->select()->from('courses')->where('code', $course_code)->where('period', $course_period);
 		
 		$query = $this->db->get();
 		return $query->row();//returns only the first row
@@ -80,7 +80,7 @@ class Lecture_note_library extends CI_Model {
 
 	function get_lecture($lecture_id)
 	{
-		$this->db->select()->from('lecture')->where('id', $lecture_id);
+		$this->db->select()->from('lectures')->where('id', $lecture_id);
 		
 		$query = $this->db->get();
 		return $query->row();//returns only the first row
@@ -88,7 +88,7 @@ class Lecture_note_library extends CI_Model {
 
 	function get_lecture_notes($lecture_id)
 	{
-		$this->db->select()->from('lecture_note')->where('lecture_id', $lecture_id);
+		$this->db->select()->from('lecture_notes')->where('lecture_id', $lecture_id);
 		
 		$query = $this->db->get();
 		return $query->result();
