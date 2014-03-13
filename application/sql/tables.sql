@@ -29,6 +29,8 @@ CREATE TABLE camera_units
 (
 	name VARCHAR(255) NOT NULL,
 	lecture_hall_name VARCHAR(255) NOT NULL,
+	ip_address VARCHAR(255) NOT NULL,
+	password VARCHAR(255) NOT NULL,
 	PRIMARY KEY(name),
 	FOREIGN KEY(lecture_hall_name) REFERENCES lecture_halls(name)
 );
