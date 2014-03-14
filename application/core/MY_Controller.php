@@ -21,6 +21,10 @@ class MY_Controller extends CI_Controller{
 	function __construct()
 	{
 		parent::__construct();
+
+		$this->lang->load('auth');
+		$this->load->helper('language');
+
 		$this->data["uri_segment_1"] = $this->uri->segment(1);
 		$this->data["uri_segment_2"] = $this->uri->segment(2);
 		$this->title = $this->config->item('site_title');
