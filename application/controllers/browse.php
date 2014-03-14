@@ -9,6 +9,7 @@ class Browse extends MY_Controller {
 		$this->load->helper('url');
 		$this->load->helper('language');
 		$this->load->helper('pretty_date');
+		$this->load->library('form_validation');
 		$this->lang->load('home');
 	}
 
@@ -22,12 +23,46 @@ class Browse extends MY_Controller {
 
 		$lecture_list = $this->load->view("elements/lecture_list",$list_data,true);
 
+		$latest_lectures = $this->load->view("elements/latest_lectures",array('lecture_list' => $lecture_list),true);
+
 		$this->data = array
 		(
-			'lecture_list' => $lecture_list,
+			'content' => $latest_lectures,
+			's' => '',
 		);
 
 		$this->title = "Project Munin";
+
+		$this->_render("browse");
+	}
+
+	function search()
+	{
+		$this->data['title'] = "Login";
+
+		$search = $this->input->get('s');
+
+		$search_results = $this->Lecture_note_library->search_courses($search);
+
+		$list_data = array
+		(
+			'courses' => $search_results,
+		);
+
+		$course_list = $this->load->view("elements/course_list",$list_data,true);
+
+		$content = $this->load->view("elements/course_search_result",array(
+			'course_list' => $course_list,
+			'search' => $search,
+			),true);
+
+		$this->data = array
+		(
+			'content' => $content,
+			's' => '',
+		);
+
+		$this->title = "Project Munin Search Results ".$search;
 
 		$this->_render("browse");
 	}

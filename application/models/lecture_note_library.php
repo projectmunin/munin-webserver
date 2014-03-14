@@ -35,6 +35,21 @@ class Lecture_note_library extends CI_Model {
 		return $query->result();
 	}
 
+	function search_courses($search)
+	{
+		//$this->db->select('name, period, code, count(lecture.id)')->from('course');
+		$query = $this->db->query('
+				SELECT name, period, code, COUNT( lectures.id ) recorded_lectures
+				FROM courses
+				LEFT OUTER JOIN lectures ON courses.period = lectures.course_period
+				AND courses.code = lectures.course_code
+				WHERE name LIKE ? OR code LIKE ?
+				GROUP BY period, code
+			',array('%'.$search.'%','%'.$search.'%'));
+		//$query = $this->db->get();
+		return $query->result();
+	}
+
 	function get_latest_lectures($count = 10)
 	{
 		/*
