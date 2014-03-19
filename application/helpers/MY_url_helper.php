@@ -16,6 +16,13 @@ if ( ! function_exists('lecture_url'))
 	}
 }
 
+if ( ! function_exists('browse_url'))
+{
+	function browse_url()
+	{
+		return site_url("/");
+	}
+}
 
 /* End of file pretty_date_helper.php */
 /* Location: ./application/helpers/pretty_date_helper.php */

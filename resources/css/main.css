@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Author's custom styles
+   General
    ========================================================================== */
 
 html
@@ -13,13 +13,20 @@ body
 	/* Margin bottom by footer height */
 	margin-bottom: 60px;
 	margin-top: 60px;
+	font-weight: 200;
 }
 
-body.auth
+/* ==========================================================================
+   Main content
+   ========================================================================== */
+#main .container
 {
-	background-color: #18bc9c;
+	margin-top: 20px;
 }
 
+/* ==========================================================================
+   Footer
+   ========================================================================== */
 #footer
 {
 	position: absolute;
@@ -30,6 +37,14 @@ body.auth
 	color: #fff;
 }
 
+/* ==========================================================================
+   Auth login
+   ========================================================================== */
+
+body.auth
+{
+	background-color: #18bc9c;
+}
 
 #auth-content
 {
@@ -40,6 +55,10 @@ body.auth
 	border-radius: 10px;
 	padding: 40px;
 }
+
+/* ==========================================================================
+   Lecture list
+   ========================================================================== */
 
 .lecture-thumb
 {
@@ -57,11 +76,6 @@ body.auth
 	height: 200px;
 }
 
-.lecture-note-img
-{
-	width: 100%;
-	margin: 10px 0px;
-}
 
 .lecture-row-time
 {
@@ -75,7 +89,63 @@ body.auth
 	display: block;
 }
 
-#main .container
+
+/* ==========================================================================
+   Lecture detail
+   ========================================================================== */
+
+.lecture-note-row
 {
-	margin-top: 20px;
+	border: 2px #eee solid;
+	padding: 10px;
+	border-radius: 10px;
+	margin: 20px 0px;
+	background: #000;
+	color: #fff;
+}
+
+.lecture-note-row img
+{
+	width: 100%;
+}
+
+.lecture-note-row .meta
+{
+	font-size: 14px;
+	font-weight: 200;
+	text-align: right;
+	display: block;
+	margin-top: 10px;
+}
+.lecture-note-row .meta .date
+{
+	display: inline;
+	font-size: 14px;
+	font-weight: 800;
+}
+
+
+.lecture-detail .course
+{
+	display: block;
+	font-size: 16px;
+	text-transform: uppercase;
+	color: #666;
+	font-weight: 400;
+}
+
+.lecture-detail .title
+{
+	display: block;
+	font-size: 30px;
+}
+
+.lecture-detail h1
+{
+	display: block;
+	font-size: 20px;
+}
+.lecture-detail .date
+{
+	font-weight: 800;
 }
