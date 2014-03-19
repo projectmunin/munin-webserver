@@ -98,7 +98,11 @@ class Lecture_note_library extends CI_Model {
 		$this->db->select()->from('lectures')->where('id', $lecture_id);
 		
 		$query = $this->db->get();
-		return $query->row();//returns only the first row
+		$lecture = $query->row();//returns only the first row
+		
+		$lecture->course = $this->get_course($lecture->course_code, $lecture->course_period);
+		
+		return $lecture;
 	}
 
 	function get_lecture_notes($lecture_id)

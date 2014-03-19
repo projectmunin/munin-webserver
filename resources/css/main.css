@@ -74,3 +74,8 @@ body.auth
 {
 	display: block;
 }
+
+#main .container
+{
+	margin-top: 20px;
+}

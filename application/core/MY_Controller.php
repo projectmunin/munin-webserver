@@ -24,6 +24,8 @@ class MY_Controller extends CI_Controller{
 
 		$this->lang->load('auth');
 		$this->load->helper('language');
+		$this->lang->load('home');
+		$this->load->library('form_validation');
 
 		$this->data["uri_segment_1"] = $this->uri->segment(1);
 		$this->data["uri_segment_2"] = $this->uri->segment(2);

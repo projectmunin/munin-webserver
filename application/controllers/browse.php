@@ -9,7 +9,6 @@ class Browse extends MY_Controller {
 		$this->load->helper('url');
 		$this->load->helper('language');
 		$this->load->helper('pretty_date');
-		$this->load->library('form_validation');
 		$this->lang->load('home');
 	}
 
