@@ -15,7 +15,8 @@ CREATE TABLE lecture_halls
 CREATE TABLE lectures
 (
 	finished BOOLEAN NOT NULL,
-	time DATETIME NOT NULL,
+	startTime DATETIME NOT NULL,
+	endTime DATETIME NOT NULL,
 	course_code VARCHAR(255) NOT NULL,
 	course_period VARCHAR(255) NOT NULL,
 	lecture_hall_name VARCHAR(255) NOT NULL,
