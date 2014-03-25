@@ -8,6 +8,7 @@ class MY_Controller extends CI_Controller{
 	protected $page_name = FALSE;
 	//the inner template
 	protected $template = "page";
+	protected $navbar = "navbar";
 	//urls to resources
 	protected $javascript = array();
 	protected $css = array();
@@ -57,7 +58,7 @@ class MY_Controller extends CI_Controller{
 		$template_args["keywords"] = $this->keywords;
 		$template_args["author"] = $this->author;
 
-		$body_args["header"] = $this->load->view("elements/navbar",array(),true);
+		$body_args["header"] = $this->load->view("elements/".$this->navbar,array(),true);
 		$body_args["footer"] = $this->load->view("elements/footer",array(),true);
 		$body_args["content"] = $this->load->view($view,array_merge($this->data,$template_args),true);
 

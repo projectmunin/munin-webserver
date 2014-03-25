@@ -24,5 +24,20 @@ if ( ! function_exists('browse_url'))
 	}
 }
 
+if ( ! function_exists('admin_camera_unit_url'))
+{
+	function camera_unit_url($camera_unit_name = false)
+	{
+		if(!$camera_unit_name)
+		{
+			return site_url("/admin/cameras");
+		}
+		else
+		{
+			return site_url("/admin/cameras/".$camera_unit_name);
+		}
+	}
+}
+
 /* End of file pretty_date_helper.php */
 /* Location: ./application/helpers/pretty_date_helper.php */

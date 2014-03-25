@@ -24,6 +24,7 @@ class Admin extends MY_Controller {
 		{
 			$this->title = "Project Munin - Admin";
 			$this->template = "admin";
+			$this->navbar = "navbar_admin";
 
 			$this->load->model('Lecture_note_library', '', true);
 			$this->data['courses'] = $this->Lecture_note_library->get_all_courses();
@@ -48,12 +49,38 @@ class Admin extends MY_Controller {
 		{
 			$this->title = "Project Munin - Admin";
 			$this->template = "admin";
+			$this->navbar = "navbar_admin";
 
 			$this->load->model('Lecture_note_library', '', true);
 			$this->data['course'] = $this->Lecture_note_library->get_course($code,$period);
 			$this->data['lectures'] = $this->Lecture_note_library->get_lectures($code,$period);
 
 			$this->_render("admin/lecture_list");
+		}
+	}
+	
+	public function cameras($camera_id = false)
+	{
+		if (!$this->ion_auth->logged_in())
+		{
+			//redirect them to the login page
+			redirect('auth/login', 'refresh');
+		}
+		elseif (!$this->ion_auth->is_admin()) //remove this elseif if you want to enable this for non-admins
+		{
+			//redirect them to the home page because they must be an administrator to view this
+			return show_error('You must be an administrator to view this page.');
+		}
+		else
+		{
+			$this->title = "Project Munin - Cameras";
+			$this->template = "admin";
+			$this->navbar = "navbar_admin";
+
+			$this->load->model('Lecture_note_library', '', true);
+			$this->data['camera_units'] = $this->Lecture_note_library->get_camera_units($camera_id);
+
+			$this->_render("admin/camera_list");
 		}
 	}
 }
