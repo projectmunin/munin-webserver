@@ -14,7 +14,7 @@
 			<div class="form-group col-xs-4">
 				<label>&nbsp;</label>
 				<div>
-					<?php echo form_submit('', lang('search_submit'), 'class="btn btn-default"');?>
+					<?php echo form_submit('', lang('search_submit'), 'class="btn btn-primary"');?>
 				</div>
 			</div>
 		<?php echo form_close();?>

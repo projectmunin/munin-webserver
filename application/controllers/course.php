@@ -22,6 +22,7 @@ class Course extends MY_Controller {
 		}
 
 		$lectures = $this->Lecture_note_library->get_lectures($code,$period);
+		$periods = $this->Lecture_note_library->get_course_periods($code);
 
 		$list_data = array
 		(
@@ -32,6 +33,7 @@ class Course extends MY_Controller {
 		$this->data = array
 		(
 			'course' => $course,
+			'periods' => $periods,
 			'lecture_list' => $lecture_list,
 		);
 
