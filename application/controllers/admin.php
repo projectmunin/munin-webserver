@@ -59,7 +59,7 @@ class Admin extends MY_Controller {
 		}
 	}
 	
-	public function cameras($camera_id = false)
+	public function cameras($camera_unit_name = false)
 	{
 		if (!$this->ion_auth->logged_in())
 		{
@@ -78,9 +78,26 @@ class Admin extends MY_Controller {
 			$this->navbar = "navbar_admin";
 
 			$this->load->model('Lecture_note_library', '', true);
-			$this->data['camera_units'] = $this->Lecture_note_library->get_camera_units($camera_id);
-
-			$this->_render("admin/camera_list");
+			
+			if(!$camera_unit_name)
+			{
+				$this->data['camera_units'] = $this->Lecture_note_library->get_all_camera_units();
+				$this->_render("admin/camera_list");
+			}
+			else
+			{
+				if($this->input->post())
+				{
+					exec("export DYLD_LIBRARY_PATH=''; cd /Users/Simon/Desktop; java -Djava.awt.headless=true CamConfig",$echo,$code);
+					echo json_encode(array('exit_code' => $code));
+				}
+				else
+				{
+					$this->data['message'] = (string)$this->input->get('message');
+					$this->data['camera_unit'] = $this->Lecture_note_library->get_camera_unit($camera_unit_name);
+					$this->_render("admin/camera_configure");
+				}
+			}
 		}
 	}
 }

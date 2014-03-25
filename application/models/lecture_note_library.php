@@ -121,22 +121,20 @@ class Lecture_note_library extends CI_Model {
 		return $query->result();
 	}
 	
-	function get_camera_units($camera_name = false)
+	function get_camera_unit($camera_name = false)
 	{
-		if(!$camera_name)
-		{
-			$this->db->select()->from('camera_units');
-			
-			$query = $this->db->get();
-			return $query->result();
-		}
-		else
-		{
-			$this->db->select()->from('camera_units')->where('name', $camera_name);
-			
-			$query = $this->db->get();
-			return $query->result();
-		}
+		$this->db->select()->from('camera_units')->where('name', $camera_name);
+		
+		$query = $this->db->get();
+		return $query->row();
+	}
+	
+	function get_all_camera_units()
+	{
+		$this->db->select()->from('camera_units');
+		
+		$query = $this->db->get();
+		return $query->result();
 	}
 }
 
