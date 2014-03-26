@@ -88,7 +88,7 @@ class Admin extends MY_Controller {
 			{
 				if($this->input->post())
 				{
-					exec("export DYLD_LIBRARY_PATH=''; cd /Users/Simon/Desktop; java -Djava.awt.headless=true CamConfig",$echo,$code);
+					exec("export DYLD_LIBRARY_PATH=''; cd external_services; java -Djava.awt.headless=true CamConfig",$echo,$code);
 					echo json_encode(array('exit_code' => $code));
 				}
 				else
