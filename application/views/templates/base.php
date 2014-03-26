@@ -10,8 +10,7 @@
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width">
 
-	<link rel="stylesheet" href="<?php echo base_url(CSS.'bootstrap-flatly.min.css'); ?>">
-	<link rel="stylesheet" href="<?php echo base_url(CSS.'main.css'); ?>">
+	<link rel="stylesheet" href="<?php echo base_url(CSS.'main.min.css'); ?>">
 
 	<script src="<?php echo base_url(JS.'vendor/modernizr-2.6.2-respond-1.1.0.min.js');?>"></script>
 
@@ -33,9 +32,7 @@
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	<script>window.jQuery || document.write('<script src="<?php echo base_url(JS.'vendor/jquery-1.11.0.min.js');?>"><\/script>')</script>
 
-	<script src="<?php echo base_url(JS.'vendor/bootstrap.min.js');?>"></script>
-
-	<script src="<?php echo base_url(JS.'main.js');?>"></script>
+	<script src="<?php echo base_url(JS.'scripts.min.js');?>"></script>
 
 	<script>
 		var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
