@@ -25,6 +25,7 @@ class Admin extends MY_Controller {
 			$this->title = "Project Munin - Admin";
 			$this->template = "admin";
 			$this->navbar = "navbar_admin";
+			$this->nav_active = "courses";
 
 			$this->load->model('Lecture_note_library', '', true);
 			$this->data['courses'] = $this->Lecture_note_library->get_all_courses();
@@ -50,6 +51,7 @@ class Admin extends MY_Controller {
 			$this->title = "Project Munin - Admin";
 			$this->template = "admin";
 			$this->navbar = "navbar_admin";
+			$this->nav_active = "courses";
 
 			$this->load->model('Lecture_note_library', '', true);
 			$this->data['course'] = $this->Lecture_note_library->get_course($code,$period);
@@ -76,6 +78,7 @@ class Admin extends MY_Controller {
 			$this->title = "Project Munin - Cameras";
 			$this->template = "admin";
 			$this->navbar = "navbar_admin";
+			$this->nav_active = "cameras";
 
 			$this->load->model('Lecture_note_library', '', true);
 			
