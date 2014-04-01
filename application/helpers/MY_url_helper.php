@@ -71,5 +71,14 @@ if ( ! function_exists('admin_camera_units'))
 	}
 }
 
+if ( ! function_exists('admin_delete_course_url'))
+{
+	function admin_delete_course_url($course_code,$course_period)
+	{
+		return site_url("/admin/courses/".$course_code."/".$course_period."/delete");
+	}
+}
+
+
 /* End of file pretty_date_helper.php */
 /* Location: ./application/helpers/pretty_date_helper.php */

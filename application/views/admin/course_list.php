@@ -13,15 +13,29 @@
 						<th>Period</th>
 						<th>Description</th>
 						<th>Recorded lectures</th>
-						<th>Manage lectures</th>
+						<th></th>
+						<th></th>
 					</thead>
 					<tbody>
 						<?php foreach($courses as $course): ?>
-							<td><?=$course->code ?></td>
+							<td>
+								<a href="<?=admin_course_url($course->code,$course->period) ?>">
+									<?=$course->code ?>
+								</a>
+							</td>
 							<td><?=$course->period ?></td>
 							<td><?=$course->name ?></td>
 							<td><?=$course->recorded_lectures ?></td>
-							<td><a href="<?=site_url('/admin/courses/'.$course->code.'/'.$course->period) ?>">List lectures</a> <a href="<?=site_url('/admin/courses/'.$course->code.'/'.$course->period.'/delete') ?>">Delete course</a></td>
+							<td>
+								<a class="delete-link" href="<?=admin_delete_course_url($course->code,$course->period) ?>">
+									<span class="glyphicon glyphicon-remove"></span> Delete course
+								</a>
+							</td>
+							<td>
+								<a class="detail-link" href="<?=admin_course_url($course->code,$course->period) ?>">
+									<span class="glyphicon glyphicon-arrow-right"></span> Show lectures
+								</a>
+							</td>
 						<?php endforeach; ?>
 					</tbody>
 				</table>

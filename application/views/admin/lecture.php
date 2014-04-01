@@ -40,7 +40,7 @@
 									<a href="<?=admin_camera_unit_url($lecture_note->camera_unit_name) ?>"><?=$lecture_note->camera_unit_name ?></a>
 								</td>
 								<td>
-									<a href="#">Delete</a>
+									<a href="#" class="delete-link">Delete</a>
 								</td>
 							</tr>
 						<?php endforeach; ?>

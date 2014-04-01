@@ -66,7 +66,7 @@ class Lecture_note_library extends CI_Model {
 		//TODO might want to make this in one query
 		$lectures = $this->db->select()->from('lectures')->get()->result();
 		foreach ($lectures as $lecture) {
-			$lecture->lecture_note = $this->db->select()->from('lecture_notes')->where('lecture_id', $lecture->id)->order_by('time','desc')->get()->row();
+			$lecture->lecture_notes = $this->db->select()->from('lecture_notes')->where('lecture_id', $lecture->id)->order_by('time','desc')->get()->result();
 			$lecture->course = $this->db->select()->from('courses')->where('code', $lecture->course_code)->where('period', $lecture->course_period)->get()->row();
 		}
 		
@@ -78,7 +78,7 @@ class Lecture_note_library extends CI_Model {
 		$lectures = $this->db->select()->from('lectures')->where('course_code', $course_code)->where('course_period', $course_period)->get()->result();
 		
 		foreach ($lectures as $lecture) {
-			$lecture->lecture_note = $this->db->select()->from('lecture_notes')->where('lecture_id', $lecture->id)->order_by('time','desc')->get()->row();
+			$lecture->lecture_notes = $this->db->select()->from('lecture_notes')->where('lecture_id', $lecture->id)->order_by('time','desc')->get()->result();
 			$lecture->course = $this->db->select()->from('courses')->where('code', $lecture->course_code)->where('period', $lecture->course_period)->get()->row();
 		}
 

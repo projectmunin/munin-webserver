@@ -11,19 +11,29 @@
 			<div class="table-responsive">
 				<table class="table table-hover">
 					<thead>
-						<th>#</th>
+						<th>Id</th>
 						<th>Time</th>
 						<th>Lecture hall</th>
-						<th>Lecture notes</th>
-						<th>Manage lecture</th>
+						<th># Lecture notes</th>
+						<th></th>
+						<th></th>
 					</thead>
 					<tbody>
 						<?php foreach($lectures as $lecture): ?>
-							<td><?=$lecture->id ?></td>
+							<td><a href="<?=admin_lecture_url($lecture->id) ?>"><?=$lecture->id ?></a></td>
 							<td><?=$lecture->time ?></td>
 							<td><?=$lecture->lecture_hall_name ?></td>
-							<td><a href="<?=admin_lecture_url($lecture->id) ?>">2</a></td>
-							<td><a href="#">Delete lecture</a></td>
+							<td><?php echo count($lecture->lecture_notes) ?></td>
+							<td>
+								<a href="#" class="delete-link">
+									<span class="glyphicon glyphicon-remove"></span> Delete lecture
+								</a>
+							</td>
+							<td>
+								<a href="<?=admin_lecture_url($lecture->id) ?>" class="detail-link">
+									<span class="glyphicon glyphicon-arrow-right"></span> Show lecture notes
+								</a>
+							</td>
 						<?php endforeach; ?>
 					</tbody>
 				</table>
