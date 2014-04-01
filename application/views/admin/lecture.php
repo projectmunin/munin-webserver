@@ -26,7 +26,9 @@
 									<?=$lecture_note->id ?>
 								</td>
 								<td>
-									<img src="<?=base_url(LECTURE_NOTES.$lecture_note->image) ?>" style="max-width: 200px; width: 100%" />
+									<a href="<?=base_url(LECTURE_NOTES.$lecture_note->image) ?>" class="lightbox">
+										<img src="<?=base_url(LECTURE_NOTES.$lecture_note->image) ?>" style="max-width: 200px; width: 100%" />
+									</a>
 								</td>
 								<td>
 									<?=$lecture_note->time ?>

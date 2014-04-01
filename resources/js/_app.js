@@ -11,4 +11,6 @@ $(document).ready(function() {
 		
 		event.preventDefault();
 	});
+	
+	$('a.lightbox').nivoLightbox();
 });
