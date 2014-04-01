@@ -1,6 +1,11 @@
 <div class="container">
 	  <div class="row">
 		<div class="col-xs-12">
+			<ol class="breadcrumb">
+				<li><a href="<?=admin_camera_units() ?>">Camera Units</a></li>
+				<li class="active"><?=$camera_unit->name ?></li>
+			</ol>
+
 			<span class="type">Camera</span>
 			<h1><?=$camera_unit->name ?></h1>
 			<div id="camera_unit-config-status" class="alert alert-info" style="display:none">
