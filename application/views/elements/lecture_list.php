@@ -2,7 +2,7 @@
 	<div class="lecture-row">
 		<div class="lecture-thumb">
 			<a href="<?=lecture_url($lecture->id) ?>">
-				<img class="lecture-thumb-img" src="<?=base_url(LECTURE_NOTES.$lecture->lecture_note->image) ?>" />
+				<img class="lecture-thumb-img" src="<?=base_url(LECTURE_NOTES.$lecture->lecture_notes[0]->image) ?>" />
 			</a>
 		</div>
 		<span class="lecture-row-time"><?=pretty_relative_time($lecture->time) ?></span>
