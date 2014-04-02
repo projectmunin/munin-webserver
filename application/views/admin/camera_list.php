@@ -6,12 +6,14 @@
 			</ol>
 			<h2>Camera Units</h2>
 			<div class="table-responsive">
-				<table class="table table-hover">
+				<table class="table table-hover sortable">
 					<thead>
-						<th>Name</th>
-						<th>Lecture hall</th>
-						<th>IP address</th>
-						<th></th>
+						<tr>
+							<th data-defaultsort="asc" data-mainsort="true">Name</th>
+							<th>Lecture hall</th>
+							<th>IP address</th>
+							<th data-defaultsort="disabled"></th>
+						</tr>
 					</thead>
 					<tbody>
 						<?php foreach($camera_units as $camera_unit): ?>

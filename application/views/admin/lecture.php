@@ -11,14 +11,16 @@
 			<h3>End Time: <?=$lecture->endTime ?></h2>
 			<h3>Location: <?=$lecture->lecture_hall_name ?></h2>
 			<div class="table-responsive">
-				<table class="table table-hover">
+				<table class="table table-hover sortable">
 					<thead>
-						<th>Id</th>
-						<th>Image</th>
-						<th>Time</th>
-						<th>Processed</th>
-						<th>Camera unit</th>
-						<th></th>
+						<tr>
+							<th>Id</th>
+							<th data-defaultsort="disabled">Image</th>
+							<th data-defaultsort="desc" data-mainsort="true">Time</th>
+							<th>Processed</th>
+							<th>Camera unit</th>
+							<th data-defaultsort="disabled"></th>
+						</tr>
 					</thead>
 					<tbody>
 						<?php foreach($lecture_notes as $lecture_note): ?>

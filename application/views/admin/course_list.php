@@ -9,12 +9,14 @@
 			<div class="table-responsive">
 				<table class="table table-hover sortable">
 					<thead>
-						<th>Course code</th>
-						<th>Period</th>
-						<th>Description</th>
-						<th>Recorded lectures</th>
-						<th></th>
-						<th></th>
+						<tr>
+							<th data-defaultsort="asc" data-mainsort="true">Course code</th>
+							<th>Period</th>
+							<th>Description</th>
+							<th>Recorded lectures</th>
+							<th data-defaultsort="disabled"></th>
+							<th data-defaultsort="disabled"></th>
+						</tr>
 					</thead>
 					<tbody>
 						<?php foreach($courses as $course): ?>
@@ -34,7 +36,7 @@
 							</td>
 							<td>
 								<a class="detail-link" href="<?=admin_course_url($course->code,$course->period) ?>">
-									<span class="glyphicon glyphicon-arrow-right"></span> Show lectures
+									<span class="glyphicon glyphicon-arrow-right"></span> Show details
 								</a>
 							</td>
 						</tr>

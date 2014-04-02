@@ -70,6 +70,18 @@ VALUES
 	NULL
 );
 
+INSERT INTO lectures
+VALUES
+(
+	'1',
+	'2014-03-20 10:00:00',
+	'2014-03-20 12:45:00',
+	'DIT620',
+	'VT14',
+	'EF',
+	NULL
+);
+
 INSERT INTO camera_units
 VALUES
 (
@@ -128,6 +140,17 @@ VALUES
 	'2014-04-02 15:20:02',
 	'1',
 	'3',
+	'cam2',
+	NULL
+);
+
+INSERT INTO lecture_notes
+VALUES
+(
+	'DIT620/VT14/2014/02/24/2.jpg',
+	'2014-03-20 10:24:10',
+	'1',
+	'4',
 	'cam2',
 	NULL
 );

@@ -20,6 +20,5 @@ $(document).ready(function() {
 		window.location.href = $(this).val();
 	});
 	
-	$("table.sortable").tablesorter();
-	
+	$.bootstrapSortable(true, 'reversed');
 });
