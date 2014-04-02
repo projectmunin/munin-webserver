@@ -79,6 +79,14 @@ if ( ! function_exists('admin_delete_course_url'))
 	}
 }
 
+if ( ! function_exists('admin_delete_lecture_note_url'))
+{
+	function admin_delete_lecture_note_url($lecture_note_id)
+	{
+		return site_url("/admin/lecture/".$lecture_note_id."/delete");
+	}
+}
+
 
 /* End of file pretty_date_helper.php */
 /* Location: ./application/helpers/pretty_date_helper.php */

@@ -7,7 +7,7 @@
 
 			<h1>Courses</h1>
 			<div class="table-responsive">
-				<table class="table table-hover">
+				<table class="table table-hover sortable">
 					<thead>
 						<th>Course code</th>
 						<th>Period</th>
@@ -18,6 +18,7 @@
 					</thead>
 					<tbody>
 						<?php foreach($courses as $course): ?>
+						<tr>
 							<td>
 								<a href="<?=admin_course_url($course->code,$course->period) ?>">
 									<?=$course->code ?>
@@ -36,6 +37,7 @@
 									<span class="glyphicon glyphicon-arrow-right"></span> Show lectures
 								</a>
 							</td>
+						</tr>
 						<?php endforeach; ?>
 					</tbody>
 				</table>

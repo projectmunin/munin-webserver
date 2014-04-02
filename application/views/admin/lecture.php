@@ -4,10 +4,11 @@
 			<ol class="breadcrumb">
 				<li><a href="<?=admin_courses_url() ?>">Courses</a></li>
 				<li><a href="<?=admin_course_url($lecture->course->code,$lecture->course->period) ?>"><?=$lecture->course->name ?> (<?=$lecture->course->code ?> <?=$lecture->course->period ?>)</a></li>
-				<li class="active">Lecture <?=$lecture->time ?></li>
+				<li class="active">Lecture <?=$lecture->id ?></li>
 			</ol>
 			<h1>Lecture</h1>
-			<h3>Date: <?=$lecture->time ?></h2>
+			<h3>Start Time: <?=$lecture->startTime ?></h2>
+			<h3>End Time: <?=$lecture->endTime ?></h2>
 			<h3>Location: <?=$lecture->lecture_hall_name ?></h2>
 			<div class="table-responsive">
 				<table class="table table-hover">
@@ -17,7 +18,7 @@
 						<th>Time</th>
 						<th>Processed</th>
 						<th>Camera unit</th>
-						<th>Manage</th>
+						<th></th>
 					</thead>
 					<tbody>
 						<?php foreach($lecture_notes as $lecture_note): ?>
@@ -40,7 +41,9 @@
 									<a href="<?=admin_camera_unit_url($lecture_note->camera_unit_name) ?>"><?=$lecture_note->camera_unit_name ?></a>
 								</td>
 								<td>
-									<a href="#" class="delete-link">Delete</a>
+									<a class="delete-link" href="<?=admin_delete_lecture_note_url($lecture_note->id) ?>">
+										<span class="glyphicon glyphicon-remove"></span> Delete lecture note
+									</a>
 								</td>
 							</tr>
 						<?php endforeach; ?>

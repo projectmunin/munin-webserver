@@ -14,6 +14,14 @@ VALUES
 	'DIT620'
 );
 
+INSERT INTO courses
+VALUES
+(
+	'Diskret matematik',
+	'VT14',
+	'TMV200'
+);
+
 INSERT INTO lecture_halls
 VALUES
 (
@@ -46,6 +54,18 @@ VALUES
 	'2013-02-24 15:00:00',
 	'DIT620',
 	'VT13',
+	'HB1',
+	NULL
+);
+
+INSERT INTO lectures
+VALUES
+(
+	'1',
+	'2014-04-02 15:15:00',
+	'2014-04-02 17:00:00',
+	'TMV200',
+	'VT14',
 	'HB1',
 	NULL
 );
@@ -97,6 +117,17 @@ VALUES
 	'2013-02-24 13:15:05',
 	'1',
 	'2',
-	'cam1',
+	'cam2',
+	NULL
+);
+
+INSERT INTO lecture_notes
+VALUES
+(
+	'DIT620/VT14/2014/02/24/2.jpg',
+	'2014-04-02 15:20:02',
+	'1',
+	'3',
+	'cam2',
 	NULL
 );

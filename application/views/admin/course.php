@@ -12,7 +12,8 @@
 				<table class="table table-hover">
 					<thead>
 						<th>Id</th>
-						<th>Time</th>
+						<th>Start Time</th>
+						<th>End Time</th>
 						<th>Lecture hall</th>
 						<th># Lecture notes</th>
 						<th></th>
@@ -20,8 +21,10 @@
 					</thead>
 					<tbody>
 						<?php foreach($lectures as $lecture): ?>
+						<tr>
 							<td><a href="<?=admin_lecture_url($lecture->id) ?>"><?=$lecture->id ?></a></td>
-							<td><?=$lecture->time ?></td>
+							<td><?=$lecture->startTime ?></td>
+							<td><?=$lecture->endTime ?></td>
 							<td><?=$lecture->lecture_hall_name ?></td>
 							<td><?php echo count($lecture->lecture_notes) ?></td>
 							<td>
@@ -34,6 +37,7 @@
 									<span class="glyphicon glyphicon-arrow-right"></span> Show lecture notes
 								</a>
 							</td>
+						</tr>
 						<?php endforeach; ?>
 					</tbody>
 				</table>
