@@ -1,4 +1,7 @@
 $(document).ready(function() {
+	$('body').removeClass('nojs');
+	$('a.lightbox').nivoLightbox();
+	
 	//TODO Only on admin configure camera unit
 	$("#camera_unit-config-form").submit(function(event) {
 		var messagediv = $("#camera_unit-config-status");
@@ -12,5 +15,9 @@ $(document).ready(function() {
 		event.preventDefault();
 	});
 	
-	$('a.lightbox').nivoLightbox();
+	
+	$('#course-period-select').change(function() {
+		window.location.href = $(this).val();
+	});
+	
 });

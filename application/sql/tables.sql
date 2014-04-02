@@ -48,13 +48,3 @@ CREATE TABLE lecture_notes
 	FOREIGN KEY(camera_unit_name) REFERENCES camera_units(name),
 	FOREIGN KEY(lecture_id) REFERENCES lectures(id)
 );
-
-
-CREATE TABLE camera_units_insertion
-(
-	name VARCHAR(255) NOT NULL,
-	lecture_hall_name VARCHAR(255) NOT NULL,
-	ip_address VARCHAR(255) NOT NULL,
-	password VARCHAR(255) NOT NULL,
-
-);
