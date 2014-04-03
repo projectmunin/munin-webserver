@@ -76,21 +76,4 @@ class MY_Controller extends CI_Controller{
 	    }
 	}
 
-	protected function _render_admin($view, $render_type = "FULLPAGE") {
-		if (!$this->ion_auth->logged_in())
-		{
-			//redirect them to the login page
-			redirect('auth/login?return_to=admin', 'refresh');
-		}
-		elseif (!$this->ion_auth->is_admin()) //remove this elseif if you want to enable this for non-admins
-		{
-			//redirect them to the home page because they must be an administrator to view this
-			return show_error('You must be an administrator to view this page.');
-		}
-		else
-		{
-			$this->_render($view,$render_type);
-		}
-	}
-
 }

@@ -4,6 +4,16 @@ class Cameras extends MY_Controller {
 	function __construct()
 	{
 		parent::__construct();
+		
+		if (!$this->ion_auth->logged_in())
+		{
+			redirect('auth/login?return_to=admin', 'refresh');
+		}
+		elseif (!$this->ion_auth->is_admin())
+		{
+			return show_error('You must be an administrator to view this page.');
+		}
+
 	}
 	
 	public function index($camera_unit_name = false)
@@ -18,7 +28,7 @@ class Cameras extends MY_Controller {
 		if(!$camera_unit_name)
 		{
 			$this->data['camera_units'] = $this->Lecture_note_library->get_all_camera_units();
-			$this->_render_admin("admin/camera_list");
+			$this->_render("admin/camera_list");
 		}
 		else
 		{
@@ -31,7 +41,7 @@ class Cameras extends MY_Controller {
 			{
 				$this->data['message'] = (string)$this->input->get('message');
 				$this->data['camera_unit'] = $this->Lecture_note_library->get_camera_unit($camera_unit_name);
-				$this->_render_admin("admin/camera_configure");
+				$this->_render("admin/camera_configure");
 			}
 		}
 	}

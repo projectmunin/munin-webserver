@@ -6,7 +6,7 @@
 			</ol>
 			
 			<h1>Manage users</h1>
-			<a href="/auth/add_user" class="btn btn-success">Add user</a>
+			<a href="/admin/users/add" class="btn btn-success">Add user</a>
 			<table class="table table-hover sortable">
 				<thead>
 					<tr>

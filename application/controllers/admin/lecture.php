@@ -4,6 +4,16 @@ class Lecture extends MY_Controller {
 	function __construct()
 	{
 		parent::__construct();
+		
+		if (!$this->ion_auth->logged_in())
+		{
+			redirect('auth/login?return_to=admin', 'refresh');
+		}
+		elseif (!$this->ion_auth->is_admin())
+		{
+			return show_error('You must be an administrator to view this page.');
+		}
+
 	}
 	
 	public function index($id)
@@ -30,7 +40,7 @@ class Lecture extends MY_Controller {
 			$this->data['lecture'] = $this->Lecture_note_library->get_lecture($id);
 			$this->data['lecture_notes'] = $this->Lecture_note_library->get_lecture_notes($id);
 
-			$this->_render_admin("admin/lecture");
+			$this->_render("admin/lecture");
 		}
 	}
 }

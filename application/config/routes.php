@@ -48,7 +48,6 @@ $route['admin']        = 'admin/admin';
 $route['admin/cameras/(:any)']        = 'admin/cameras/index/$1';
 $route['admin/courses/(:any)']        = 'admin/courses/index/$1';
 $route['admin/lecture/(:any)']        = 'admin/lecture/index/$1';
-$route['admin/users/(:any)']        = 'admin/users/index/$1';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
