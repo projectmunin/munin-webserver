@@ -4,23 +4,13 @@ class Lecture_note_library extends CI_Model {
 
 	function __construct()
 	{
-		// Call the Model constructor
 		parent::__construct();
 	}
 	
-	/**
-	 * Get latest notes
-	 * @param int $count 
-	 * @return array with latest notes
-	 */
-	function get_latest_notes($count = 10)
-	{
-		$this->db->select()->from('lecture_notes')->limit($count)->order_by('time','desc');
-		
-		$query = $this->db->get();
-		return $query->result();
-	}
-
+	/*****************************
+	* Courses
+	********************************************/
+	
 	function get_all_courses()
 	{
 		//$this->db->select('name, period, code, count(lecture.id)')->from('course');
@@ -33,6 +23,18 @@ class Lecture_note_library extends CI_Model {
 			');
 		//$query = $this->db->get();
 		return $query->result();
+	}
+	
+	function get_all_courses_count()
+	{
+		//$this->db->select('name, period, code, count(lecture.id)')->from('course');
+		$query = $this->db->query('
+				SELECT COUNT(*) AS count
+				FROM courses
+				GROUP BY code
+			');
+		//$query = $this->db->get();
+		return $query->row()->count;
 	}
 
 	function search_courses($search)
@@ -48,6 +50,35 @@ class Lecture_note_library extends CI_Model {
 			',array('%'.$search.'%','%'.$search.'%'));
 		//$query = $this->db->get();
 		return $query->result();
+	}
+	
+	function get_course($course_code, $course_period)
+	{
+		$this->db->select()->from('courses')->where('code', $course_code)->where('period', $course_period);
+		
+		$query = $this->db->get();
+		return $query->row();//returns only the first row
+	}
+	
+	function get_course_periods($course_code)
+	{
+		$this->db->select('period')->from('courses')->where('code', $course_code);
+		
+		$query = $this->db->get();
+		return $query->result();
+	}
+	
+	/*****************************
+	* Lectures
+	********************************************/
+
+	function get_all_lectures_count()
+	{
+		$query = $this->db->query('
+				SELECT COUNT(*) AS count
+				FROM lectures
+			');
+		return $query->row()->count;
 	}
 
 	function get_latest_lectures($count = 10)
@@ -84,23 +115,7 @@ class Lecture_note_library extends CI_Model {
 
 		return $lectures;
 	}
-
-	function get_course($course_code, $course_period)
-	{
-		$this->db->select()->from('courses')->where('code', $course_code)->where('period', $course_period);
-		
-		$query = $this->db->get();
-		return $query->row();//returns only the first row
-	}
 	
-	function get_course_periods($course_code)
-	{
-		$this->db->select('period')->from('courses')->where('code', $course_code);
-		
-		$query = $this->db->get();
-		return $query->result();
-	}
-
 	function get_lecture($lecture_id)
 	{
 		$this->db->select()->from('lectures')->where('id', $lecture_id);
@@ -113,6 +128,21 @@ class Lecture_note_library extends CI_Model {
 		return $lecture;
 	}
 
+
+	
+	/*****************************
+	* Lecture Notes
+	********************************************/
+
+	function get_all_lecture_notes_count()
+	{
+		$query = $this->db->query('
+				SELECT COUNT(*) AS count
+				FROM lecture_notes
+			');
+		return $query->row()->count;
+	}
+	
 	function get_lecture_notes($lecture_id)
 	{
 		$this->db->select()->from('lecture_notes')->where('lecture_id', $lecture_id);
@@ -120,6 +150,23 @@ class Lecture_note_library extends CI_Model {
 		$query = $this->db->get();
 		return $query->result();
 	}
+	
+	/**
+	 * Get latest notes
+	 * @param int $count 
+	 * @return array with latest notes
+	 */
+	function get_latest_notes($count = 10)
+	{
+		$this->db->select()->from('lecture_notes')->limit($count)->order_by('time','desc');
+		
+		$query = $this->db->get();
+		return $query->result();
+	}
+
+	/*****************************
+	* Camera Units
+	********************************************/
 	
 	function get_camera_unit($camera_name = false)
 	{

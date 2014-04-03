@@ -28,7 +28,9 @@ class Admin extends MY_Controller {
 			$this->nav_active = "admin";
 
 			$this->load->model('Lecture_note_library', '', true);
-			$this->data['courses'] = $this->Lecture_note_library->get_all_courses();
+			$this->data['courses_count'] = $this->Lecture_note_library->get_all_courses_count();
+			$this->data['lectures_count'] = $this->Lecture_note_library->get_all_lectures_count();
+			$this->data['lecture_notes_count'] = $this->Lecture_note_library->get_all_lecture_notes_count();
 
 			$this->_render("admin");
 		}
