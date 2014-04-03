@@ -13,6 +13,7 @@
           <ul class="nav navbar-nav">
             <li<?php $active = $nav_active == 'courses' ? ' class="active"' : ''; echo $active; ?>><a href="/admin/courses">Courses</a></li>
             <li<?php $active = $nav_active == 'cameras' ? ' class="active"' : ''; echo $active; ?>><a href="/admin/cameras">Camera Units</a></li>
+            <li<?php $active = $nav_active == 'users' ? ' class="active"' : ''; echo $active; ?>><a href="/admin/users">Users</a></li>
           </ul>
           <div class="navbar-right">
 	          <p class="navbar-text">Signed in as simon </p>
