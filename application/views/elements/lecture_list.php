@@ -8,7 +8,7 @@
 			</div>
 		</div>
 		<div class="col-sm-9 col-md-7">
-			<span class="lecture-row-time"><?=pretty_relative_time($lecture->startTime) ?> in <?=$lecture->lecture_hall_name ?></span>
+			<span class="lecture-row-time"><strong><?=pretty_relative_time($lecture->startTime) ?></strong> in <?=$lecture->lecture_hall_name ?></span>
 			<span class="lecture-row-course-code"><?=$lecture->course->code ?></span>
 			<span class="lecture-row-course-name"><?=$lecture->course->name ?></span>
 			<a href="<?=course_url($lecture->course->code,$lecture->course->period)?>" class="lecture-row-course-link"><span></span></a>

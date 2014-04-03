@@ -25,7 +25,8 @@
 					<div class="clearfix"></div>
 				</div>
 				<div class="col-sm-8 col-sm-pull-4">
-					<h1 class="course"><?=$course->name ?></h1>
+					<span class="course-title-code"><?=$course->code ?></span>
+					<h1 class="course-title-name"><?=$course->name ?></h1>
 				</div>
 			</div>
 			<span class="title">Lectures</span>
