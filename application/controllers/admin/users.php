@@ -37,7 +37,7 @@ class Users extends MY_Controller {
 		$this->title = "Project Munin - User list";
 		$this->template = "admin";
 		$this->navbar = "navbar_admin";
-		$this->nav_active = "admin";
+		$this->nav_active = "users";
 
 		$this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
 		
@@ -56,7 +56,7 @@ class Users extends MY_Controller {
 		$this->title = "Project Munin - Add new user";
 		$this->template = "admin";
 		$this->navbar = "navbar_admin";
-		$this->nav_active = "admin";
+		$this->nav_active = "users";
 		
 		//validate form input
 		$this->form_validation->set_rules('first_name', $this->lang->line('create_user_validation_fname_label'), 'required|xss_clean');
@@ -130,7 +130,7 @@ class Users extends MY_Controller {
 		$this->title = "Project Munin - Edit user";
 		$this->template = "admin";
 		$this->navbar = "navbar_admin";
-		$this->nav_active = "admin";
+		$this->nav_active = "users";
 
 		$user = $this->ion_auth->user($id)->row();
 		$groups=$this->ion_auth->groups()->result_array();
