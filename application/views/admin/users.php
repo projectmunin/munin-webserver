@@ -10,10 +10,10 @@
 			<table class="table table-hover sortable">
 				<thead>
 					<tr>
-						<th data-defaultsort="asc" data-mainsort="true">Username</th>
-						<th>Email</th>
-						<th>First</th>
+						<th data-defaultsort="asc" data-mainsort="true">Email</th>
+						<th>First name</th>
 						<th>Last name</th>
+						<th>Groups</th>
 						<th data-defaultsort="disabled"></th>
 						<th data-defaultsort="disabled"></th>
 					</tr>
@@ -21,19 +21,21 @@
 				<tbody>
 					<?php foreach($users as $user): ?>
 					<tr>
-						<td>
-							<?=$user->username ?>
-						</td>
 						<td><?=$user->email ?></td>
 						<td><?=$user->first_name ?></td>
 						<td><?=$user->last_name ?></td>
+						<td>
+							<?php foreach ($user->groups as $group):?>
+								<?php echo $group->name; ?><br />
+							<?php endforeach?>
+						</td>
 						<td>
 							<a class="delete-link" href="#">
 								<span class="glyphicon glyphicon-remove"></span> Delete user
 							</a>
 						</td>
 						<td>
-							<a class="detail-link" href="#">
+							<a class="detail-link" href="<?="/admin/users/edit/".$user->id ?>">
 								<span class="glyphicon glyphicon-pencil"></span> Edit user
 							</a>
 						</td>
