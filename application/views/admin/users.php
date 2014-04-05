@@ -4,7 +4,7 @@
 			<ol class="breadcrumb">
 				<li class="active">Users</li>
 			</ol>
-			
+			<div id="infoMessage"><?php echo $message;?></div>
 			<h1>Manage users</h1>
 			<a href="/admin/users/add" class="btn btn-success">Add user</a>
 			<table class="table table-hover sortable">

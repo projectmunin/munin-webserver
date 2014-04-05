@@ -32,6 +32,14 @@ if ( ! function_exists('admin_courses_url'))
 	}
 }
 
+if ( ! function_exists('admin_users_url'))
+{
+	function admin_users_url()
+	{
+		return site_url("/admin/users");
+	}
+}
+
 if ( ! function_exists('admin_camera_unit_url'))
 {
 	function admin_camera_unit_url($camera_unit_name = false)

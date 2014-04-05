@@ -13,6 +13,22 @@ class Users extends MY_Controller {
 		{
 			return show_error('You must be an administrator to view this page.');
 		}
+		
+		$this->load->library('ion_auth');
+		$this->load->library('form_validation');
+		$this->load->helper('url');
+
+		// Load MongoDB library instead of native db driver if required
+		$this->config->item('use_mongodb', 'ion_auth') ?
+		$this->load->library('mongo_db') :
+
+		$this->load->database();
+
+		$this->form_validation->set_error_delimiters($this->config->item('error_start_delimiter', 'ion_auth'), $this->config->item('error_end_delimiter', 'ion_auth'));
+
+		$this->lang->load('auth');
+		$this->load->helper('language');
+
 
 	}
 	
@@ -24,7 +40,9 @@ class Users extends MY_Controller {
 		$this->nav_active = "admin";
 
 		$this->data['users'] = $this->ion_auth->users()->result();
-
+		$this->data['message'] = $this->session->flashdata('message');
+		
+		
 		$this->_render("admin/users");
 	}
 	
@@ -39,8 +57,6 @@ class Users extends MY_Controller {
 		$this->form_validation->set_rules('first_name', $this->lang->line('create_user_validation_fname_label'), 'required|xss_clean');
 		$this->form_validation->set_rules('last_name', $this->lang->line('create_user_validation_lname_label'), 'required|xss_clean');
 		$this->form_validation->set_rules('email', $this->lang->line('create_user_validation_email_label'), 'required|valid_email|is_unique[users.email]');
-		$this->form_validation->set_rules('phone', $this->lang->line('create_user_validation_phone_label'), 'required|xss_clean');
-		$this->form_validation->set_rules('company', $this->lang->line('create_user_validation_company_label'), 'required|xss_clean');
 		$this->form_validation->set_rules('password', $this->lang->line('create_user_validation_password_label'), 'required|min_length[' . $this->config->item('min_password_length', 'ion_auth') . ']|max_length[' . $this->config->item('max_password_length', 'ion_auth') . ']|matches[password_confirm]');
 		$this->form_validation->set_rules('password_confirm', $this->lang->line('create_user_validation_password_confirm_label'), 'required');
 
@@ -53,8 +69,6 @@ class Users extends MY_Controller {
 			$additional_data = array(
 				'first_name' => $this->input->post('first_name'),
 				'last_name'  => $this->input->post('last_name'),
-				'company'    => $this->input->post('company'),
-				'phone'      => $this->input->post('phone'),
 			);
 		}
 		if ($this->form_validation->run() == true && $this->ion_auth->register($username, $password, $email, $additional_data))
@@ -62,7 +76,7 @@ class Users extends MY_Controller {
 			//check to see if we are creating the user
 			//redirect them back to the admin page
 			$this->session->set_flashdata('message', $this->ion_auth->messages());
-			redirect("auth", 'refresh');
+			redirect("admin/users", 'refresh');
 		}
 		else
 		{
@@ -88,18 +102,6 @@ class Users extends MY_Controller {
 				'type'  => 'text',
 				'value' => $this->form_validation->set_value('email'),
 			);
-			$this->data['company'] = array(
-				'name'  => 'company',
-				'id'    => 'company',
-				'type'  => 'text',
-				'value' => $this->form_validation->set_value('company'),
-			);
-			$this->data['phone'] = array(
-				'name'  => 'phone',
-				'id'    => 'phone',
-				'type'  => 'text',
-				'value' => $this->form_validation->set_value('phone'),
-			);
 			$this->data['password'] = array(
 				'name'  => 'password',
 				'id'    => 'password',
@@ -113,7 +115,7 @@ class Users extends MY_Controller {
 				'value' => $this->form_validation->set_value('password_confirm'),
 			);
 
-			$this->_render("auth/create_user");
+			$this->_render("admin/users/add");
 		}
 	}
 
