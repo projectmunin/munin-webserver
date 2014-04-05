@@ -3,14 +3,16 @@
         <div class="col-xs-12">
 			<h1>Administration</h1>
 			<div class="row">
-		        <div class="col-md-3 col-xs-6">
-		            <div class="panel panel-default">
-						<div class="panel-body">
-							<h2><?=$courses_count ?></h2>
-							courses
+				<a href="<?=admin_courses_url() ?>">
+			        <div class="col-md-3 col-xs-6">
+			            <div class="panel panel-default">
+							<div class="panel-body">
+								<h2><?=$courses_count ?></h2>
+								courses
+							</div>
 						</div>
-					</div>
-		        </div>
+			        </div>
+				</a>
 		        <div class="col-md-3 col-xs-6">
 		            <div class="panel panel-default">
 						<div class="panel-body">
