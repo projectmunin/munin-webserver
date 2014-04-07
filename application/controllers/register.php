@@ -12,7 +12,8 @@ class Register extends MY_Controller {
 	public function index()
 	{
 		$this->title = "Project Munin - Register";
-		
+		$this->template = 'auth';
+				
 		//validate form input
 		$this->form_validation->set_rules('first_name', $this->lang->line('create_user_validation_fname_label'), 'required|xss_clean');
 		$this->form_validation->set_rules('last_name', $this->lang->line('create_user_validation_lname_label'), 'required|xss_clean');

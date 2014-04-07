@@ -4,7 +4,7 @@ class Auth extends MY_Controller {
 
 	function __construct()
 	{
-		parent::__construct();
+		parent::__construct(false);
 		$this->load->library('ion_auth');
 		$this->load->library('form_validation');
 		$this->load->helper('url');
@@ -755,8 +755,7 @@ class Auth extends MY_Controller {
 	function _render_page($view, $data=null)
 	{
 		$this->template = 'auth';
-		$this->viewdata = (empty($data)) ? $this->data: $data;
-		$this->_render($view, $this->viewdata);
+		$this->_render($view);
 	}
 
 }

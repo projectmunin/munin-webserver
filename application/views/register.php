@@ -1,15 +1,11 @@
-<div class="container">
+
 	<div class="row">
 		<div class="col-xs-12">
-			<ol class="breadcrumb">
-				<li class="active">Register for Project Munin</li>
-			</ol>
-			
 			<h1>Register for Project Munin</h1>
 			<p>Use your email provided by your faculty</p>
 			
 			<div id="infoMessage"><?php echo $message;?></div>
-			<div class="col-md-8 col-lg-6">
+			<div class="col-xs-12">
 				<?php echo form_open("register",array('class' => 'form-horizontal', 'role' => 'form'));?>
 						<div class="form-group<?php $class = form_error('email') ? ' has-error' : ''; echo $class; ?>">
 							<label for="email" class="col-sm-4 control-label">
@@ -61,4 +57,3 @@
 			</div>
 		</div>
 	</div>
-</div>

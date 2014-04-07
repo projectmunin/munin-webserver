@@ -1,3 +1,5 @@
+<div class="row">
+<div class="col-xs-12">
 <h1><?php echo lang('login_heading');?></h1>
 <p><?php echo lang('login_subheading');?></p>
 
@@ -42,6 +44,9 @@
 
 <div class="form-group">
 		<div class="col-sm-offset-4 col-sm-8">
-			<a href="forgot_password"><?php echo lang('login_forgot_password');?></a>
+			<p><a href="/register">Register new user</a></p>
+			<p><a href="forgot_password"><?php echo lang('login_forgot_password');?></a></p>
 		</div>
+</div>
+</div>
 </div>

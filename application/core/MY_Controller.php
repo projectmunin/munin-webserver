@@ -20,15 +20,21 @@ class MY_Controller extends CI_Controller{
 	protected $keywords = FALSE;
 	protected $author = FALSE;
 	
-	function __construct()
+	function __construct($login_required = true)
 	{
 		parent::__construct();
-
+		
 		$this->load->library('ion_auth');
 		$this->lang->load('auth');
 		$this->load->helper('language');
 		$this->lang->load('home');
 		$this->load->library('form_validation');
+		
+		if ($login_required && !$this->ion_auth->logged_in())
+		{
+			$this->session->set_flashdata('message', '<div class="alert alert-info">You have to be logged in to view this site</div>');
+			redirect('auth/login', 'refresh');
+		}
 
 		$this->data["uri_segment_1"] = $this->uri->segment(1);
 		$this->data["uri_segment_2"] = $this->uri->segment(2);
