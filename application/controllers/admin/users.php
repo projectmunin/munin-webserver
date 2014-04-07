@@ -14,22 +14,7 @@ class Users extends MY_Controller {
 			return show_error('You must be an administrator to view this page.');
 		}
 		
-		$this->load->library('ion_auth');
-		$this->load->library('form_validation');
-		$this->load->helper('url');
-
-		// Load MongoDB library instead of native db driver if required
-		$this->config->item('use_mongodb', 'ion_auth') ?
-		$this->load->library('mongo_db') :
-
-		$this->load->database();
-
 		$this->form_validation->set_error_delimiters($this->config->item('error_start_delimiter', 'ion_auth'), $this->config->item('error_end_delimiter', 'ion_auth'));
-
-		$this->lang->load('auth');
-		$this->load->helper('language');
-
-
 	}
 	
 	public function index()
