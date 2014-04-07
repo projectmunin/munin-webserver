@@ -1,6 +1,11 @@
 
 	<div class="row">
 		<div class="col-xs-12">
+			<ol class="breadcrumb">
+				<li><a href="<?=login_url() ?>">Log in</a></li>
+				<li class="active">Register for Project Munin</li>
+			</ol>
+			
 			<h1>Register for Project Munin</h1>
 			<p>Use your email provided by your faculty</p>
 			

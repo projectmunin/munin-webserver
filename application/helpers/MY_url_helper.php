@@ -1,5 +1,13 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+if ( ! function_exists('login_url'))
+{
+	function login_url()
+	{
+		return site_url("/auth/login");
+	}
+}
+
 if ( ! function_exists('course_url'))
 {
 	function course_url($course_code,$course_period)
