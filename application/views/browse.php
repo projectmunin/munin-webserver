@@ -14,7 +14,10 @@
 			<div class="form-group col-xs-4 col-sm-2">
 				<label>&nbsp;</label>
 				<div>
-					<?php echo form_submit('', lang('search_submit'), 'class="btn btn-primary home-search-submit"');?>
+					<button type="submit" class="btn btn-primary home-search-submit">
+						<span class="glyphicon glyphicon-search"></span>
+						<?=lang('search_submit')?>
+					</button>
 				</div>
 			</div>
 		<?php echo form_close();?>

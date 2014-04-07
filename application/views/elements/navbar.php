@@ -38,10 +38,10 @@
 		  <?php if($logged_in): ?>
 			<div class="navbar-right">
 				<p class="navbar-text">Signed in as <?=$user ?> </p>
+				<a href="/auth/logout" class="navbar-text"><span class="glyphicon glyphicon-log-out"></span> Log out</a>
 				<?php if($is_admin): ?>
-					<a href="<?=admin_url() ?>" class="btn btn-default navbar-btn">Admin Panel</a>
+					<a href="<?=admin_url() ?>" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-stats"></span> Admin Panel</a>
 				<?php endif; ?>
-				<a href="/auth/logout" class="btn btn-danger navbar-btn">Log out</a>
 			</div>
 		  <?php endif; ?>
         </div><!--/.navbar-collapse -->
