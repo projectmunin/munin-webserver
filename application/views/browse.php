@@ -2,7 +2,7 @@
 	<div class="row">
 		<?php echo form_open("browse/search",array('class' => '', 'role' => 'form', 'method' => 'get'));?>
 
-			<div class="col-xs-8 form-group<?php $class = form_error('s') ? ' has-error' : ''; echo $class; ?>">
+			<div class="col-xs-8 col-sm-10 form-group<?php $class = form_error('s') ? ' has-error' : ''; echo $class; ?>">
 				<label for="s" class="control-label">
 					<?php echo lang('search_course_label');?>
 				</label>
@@ -11,10 +11,10 @@
 				</div>
 			</div>
 
-			<div class="form-group col-xs-4">
+			<div class="form-group col-xs-4 col-sm-2">
 				<label>&nbsp;</label>
 				<div>
-					<?php echo form_submit('', lang('search_submit'), 'class="btn btn-primary"');?>
+					<?php echo form_submit('', lang('search_submit'), 'class="btn btn-primary home-search-submit"');?>
 				</div>
 			</div>
 		<?php echo form_close();?>

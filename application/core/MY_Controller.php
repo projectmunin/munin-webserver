@@ -61,6 +61,17 @@ class MY_Controller extends CI_Controller{
 			$template_args["author"] = $this->author;
 	
 			$navbar_args["nav_active"] = $this->nav_active;
+			$navbar_args["logged_in"] = $this->ion_auth->logged_in();
+			$navbar_args["is_admin"] = $this->ion_auth->is_admin();
+			$user = $this->ion_auth->user()->row();
+			if($user)
+			{
+				$navbar_args["user"] = $user->first_name.' '.$user->last_name;
+			}
+			else
+			{
+				$navbar_args["user"] = '';
+			}
 	
 			$navbar = $this->load->view("elements/".$this->navbar,$navbar_args,true);
 			$body_args["header"] = $navbar;

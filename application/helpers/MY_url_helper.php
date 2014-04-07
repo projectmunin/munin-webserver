@@ -24,6 +24,14 @@ if ( ! function_exists('browse_url'))
 	}
 }
 
+if ( ! function_exists('admin_url'))
+{
+	function admin_url()
+	{
+		return site_url("/admin");
+	}
+}
+
 if ( ! function_exists('admin_courses_url'))
 {
 	function admin_courses_url()

@@ -35,6 +35,15 @@
             <?php echo form_submit('submit', lang('login_submit_btn'), 'class="btn btn-success"');?>
             
           <?php echo form_close(); */?>
+		  <?php if($logged_in): ?>
+			<div class="navbar-right">
+				<p class="navbar-text">Signed in as <?=$user ?> </p>
+				<?php if($is_admin): ?>
+					<a href="<?=admin_url() ?>" class="btn btn-default navbar-btn">Admin Panel</a>
+				<?php endif; ?>
+				<a href="/auth/logout" class="btn btn-danger navbar-btn">Log out</a>
+			</div>
+		  <?php endif; ?>
         </div><!--/.navbar-collapse -->
       </div>
     </div>
