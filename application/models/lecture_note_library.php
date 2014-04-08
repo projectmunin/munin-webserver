@@ -180,8 +180,9 @@ class Lecture_note_library extends CI_Model {
 	{
 		$this->db->select()->from('camera_units');
 		
-		$query = $this->db->get();
-		return $query->result();
+		$camera_units = $this->db->get()->result();
+		
+		return $camera_units;
 	}
 }
 

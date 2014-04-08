@@ -101,6 +101,42 @@ body.auth
 }
 
 /* ==========================================================================
+   Admin camera list
+   ========================================================================== */
+
+.camera-status-offline-icon
+{
+	.glyphicon();
+	.glyphicon-remove-circle();
+	color: @brand-danger;
+}
+
+.camera-status-offline-text
+{
+	color: @brand-danger;
+}
+
+.camera-status-online-icon
+{
+	.glyphicon();
+	.glyphicon-ok-circle();
+	color: @brand-success;
+}
+
+.camera-status-online-text
+{
+	color: @brand-success;
+}
+
+.camera-status-loading .jsspinner
+{
+	position: relative !important;
+	display: block;
+	margin-top: 10px;
+	margin-left: 10px;
+}
+
+/* ==========================================================================
    Lecture list
    ========================================================================== */
 

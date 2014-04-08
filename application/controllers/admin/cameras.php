@@ -16,7 +16,7 @@ class Cameras extends MY_Controller {
 
 	}
 	
-	public function index($camera_unit_name = false)
+	public function index($camera_unit_name = false, $action = false)
 	{
 		$this->title = "Project Munin - Cameras";
 		$this->template = "admin";
@@ -28,14 +28,32 @@ class Cameras extends MY_Controller {
 		if(!$camera_unit_name)
 		{
 			$this->data['camera_units'] = $this->Lecture_note_library->get_all_camera_units();
+			
 			$this->_render("admin/camera_list");
 		}
 		else
 		{
-			if($this->input->post())
+			//AJAX actions
+			if($action)
 			{
-				exec("export DYLD_LIBRARY_PATH=''; cd external_services; java -Djava.awt.headless=true CamConfig",$echo,$code);
-				echo json_encode(array('exit_code' => $code));
+				if($action == "set_config")
+				{
+					if($this->input->post())
+					{
+						exec("export DYLD_LIBRARY_PATH=''; cd external_services; java -Djava.awt.headless=true CamConfig",$echo,$code);
+						echo json_encode(array('exit_code' => $code));
+					}
+				}
+				if($action == "get_status")
+				{
+					$this->load->helper('network');
+					$camera_unit = $this->Lecture_note_library->get_camera_unit($camera_unit_name);
+					
+					//$camera_unit->ip_address
+					$ping_status = ping($camera_unit->ip_address,80,10);
+					
+					echo json_encode(array('status' => $ping_status));
+				}
 			}
 			else
 			{
