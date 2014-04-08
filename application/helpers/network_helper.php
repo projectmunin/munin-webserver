@@ -3,9 +3,9 @@
 
 if ( ! function_exists('ping'))
 {
-	function ping($host,$retries,$timeout)
+	function ping($host,$retries,$waittime)
 	{
-		exec(sprintf('ping -c '.$retries.' -W '.$timeout.' %s', escapeshellarg($host)), $res, $rval);
+		exec(sprintf('ping -c %d -W %d %s', $retries, $waittime, escapeshellarg($host)), $res, $rval);
 		return $rval === 0;
 	}
 }
