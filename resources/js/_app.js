@@ -50,13 +50,17 @@ $(document).ready(function() {
 		var camname = $(this).data('name');
 		
 		$.getJSON("/admin/cameras/"+camname+"/get_status", function( data ){
-			if(data.status === 'down')
+			if(data.online === true)
 			{
 				statusElement.html('<span class="camera-status-offline-icon"></span> <span class="camera-status-offline-text">Offline</span>');
 			}
-			else
+			else if(data.online === false)
 			{
 				statusElement.html('<span class="camera-status-online-icon"></span> <span class="camera-status-online-text">Online</span>');
+			}
+			else
+			{
+				statusElement.html('?');
 			}
 		});
 	});

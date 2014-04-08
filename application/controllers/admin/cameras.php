@@ -50,9 +50,9 @@ class Cameras extends MY_Controller {
 					$camera_unit = $this->Lecture_note_library->get_camera_unit($camera_unit_name);
 					
 					//$camera_unit->ip_address
-					$ping_status = ping($camera_unit->ip_address,80,10);
+					$ping_status = ping("129.16.176.1",2,5);
 					
-					echo json_encode(array('status' => $ping_status));
+					echo json_encode(array('online' => $ping_status));
 				}
 			}
 			else

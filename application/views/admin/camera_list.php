@@ -22,7 +22,7 @@
 							<td><?=$camera_unit->name ?></td>
 							<td><?=$camera_unit->lecture_hall_name ?></td>
 							<td><?=$camera_unit->ip_address ?></td>
-							<td><span class="camera-status-icon" data-name="<?=$camera_unit->name ?>"><span class="camera-status-loading"></span></td>
+							<td><span class="camera-status-icon" data-name="<?=$camera_unit->name ?>"><span class="camera-status-loading"></span></span></td>
 							<td>
 								<a class="detail-link" href="<?php echo admin_camera_unit_url($camera_unit->name) ?>">
 									<span class="glyphicon glyphicon-arrow-right"></span> Configure

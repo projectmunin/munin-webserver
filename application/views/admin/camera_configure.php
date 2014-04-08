@@ -20,6 +20,12 @@
 			<?php endif; ?>
 			<form id="camera_unit-config-form" class="form-horizontal" role="form">
 				<div class="form-group">
+					<label for="name" class="col-sm-2 control-label">Status</label>
+					<div class="col-sm-10">
+						<span class="camera-status-icon" data-name="<?=$camera_unit->name ?>"><span class="camera-status-loading"></span></span>
+					</div>
+				</div>
+				<div class="form-group">
 					<label for="name" class="col-sm-2 control-label">Name</label>
 					<div class="col-sm-10">
 						<input type="text" class="form-control" name="name" placeholder="Name" value="<?=$camera_unit->name ?>">

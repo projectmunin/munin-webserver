@@ -1,14 +1,12 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-// http://stackoverflow.com/questions/1239068/ping-site-and-return-result-in-php
+
 if ( ! function_exists('ping'))
 {
-	function ping($host, $port, $timeout) {
-		$tB = microtime(true); 
-		$fP = @fSockOpen($host, $port, $errno, $errstr, $timeout);
-		if (!$fP) { return "down"; } 
-		$tA = microtime(true); 
-		return round((($tA - $tB) * 1000), 0)." ms";
+	function ping($host,$retries,$timeout)
+	{
+		exec(sprintf('ping -c '.$retries.' -W '.$timeout.' %s', escapeshellarg($host)), $res, $rval);
+		return $rval === 0;
 	}
 }
 
