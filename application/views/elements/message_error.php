@@ -1,0 +1,1 @@
+<div class="alert alert-danger<?php $class = $dismissable ? ' alert-dismissable' : ''; echo $class ?>"><strong><?=$title ?></strong> <?=$message ?></div>

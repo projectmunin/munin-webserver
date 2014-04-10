@@ -5,6 +5,10 @@
 				<li class="active">Courses</li>
 			</ol>
 
+			<div class="message">
+			<?=$message ?>
+			</div>
+			
 			<h1>Courses</h1>
 			<div class="table-responsive">
 				<table class="table table-hover sortable">

@@ -1,0 +1,1 @@
+<div class="alert alert-success<?php if($dismissable): ?> alert-dismissable<?php endif; ?>"><?php if($dismissable): ?><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><?php endif; ?><strong><?=$title ?></strong> <?=$message ?></div>
