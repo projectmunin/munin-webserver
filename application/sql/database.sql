@@ -1,1 +1,1 @@
-CREATE DATABASE 'project-munin';
+CREATE DATABASE `project-munin`;
