@@ -6,10 +6,21 @@
 				<li><a href="<?=admin_course_url($lecture->course->code,$lecture->course->period) ?>"><?=$lecture->course->name ?> (<?=$lecture->course->code ?> <?=$lecture->course->period ?>)</a></li>
 				<li class="active">Lecture <?=$lecture->id ?></li>
 			</ol>
-			<h1>Lecture</h1>
-			<h3>Start Time: <?=$lecture->startTime ?></h2>
-			<h3>End Time: <?=$lecture->endTime ?></h2>
-			<h3>Location: <?=$lecture->lecture_hall_name ?></h2>
+			<div class="message">
+			<?=$message ?>
+			</div>
+			<div class="row">
+				<div class="col-sm-3 col-sm-push-9 text-right">
+					<a href="<?=admin_delete_lecture_url($lecture->id) ?>" class="btn btn-danger">Delete lecture</a>
+				</div>
+				<div class="col-sm-9 col-sm-pull-3">
+					<h1>Lecture</h1>
+					<h3>Start Time: <?=$lecture->startTime ?></h2>
+					<h3>End Time: <?=$lecture->endTime ?></h2>
+					<h3>Location: <?=$lecture->lecture_hall_name ?></h2>
+				</div>
+			</div>
+
 			<div class="table-responsive">
 				<table class="table table-hover sortable">
 					<thead>

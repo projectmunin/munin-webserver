@@ -5,6 +5,9 @@
 				<li><a href="<?=admin_courses_url() ?>">Courses</a></li>
 				<li class="active"><?=$course->name ?> (<?=$course->code ?> <?=$course->period ?>)</li>
 			</ol>
+			<div class="message">
+			<?=$message ?>
+			</div>
 			<div class="row">
 				<div class="col-sm-3 col-sm-push-9 text-right">
 					<a href="<?=admin_delete_course_url($course->code,$course->period) ?>" class="btn btn-danger">Delete course</a>
@@ -36,13 +39,13 @@
 							<td><?=$lecture->lecture_hall_name ?></td>
 							<td><?php echo count($lecture->lecture_notes) ?></td>
 							<td>
-								<a href="#" class="delete-link">
+								<a href="<?=admin_delete_lecture_url($lecture->id) ?>" class="delete-link">
 									<span class="glyphicon glyphicon-remove"></span> Delete lecture
 								</a>
 							</td>
 							<td>
 								<a href="<?=admin_lecture_url($lecture->id) ?>" class="detail-link">
-									<span class="glyphicon glyphicon-arrow-right"></span> Show details
+									<span class="glyphicon glyphicon-arrow-right"></span> Show lecture notes
 								</a>
 							</td>
 						</tr>

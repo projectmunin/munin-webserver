@@ -103,11 +103,19 @@ if ( ! function_exists('admin_delete_course_url'))
 	}
 }
 
+if ( ! function_exists('admin_delete_lecture_url'))
+{
+	function admin_delete_lecture_url($lecture_id)
+	{
+		return site_url("/admin/lecture/".$lecture_id."/delete");
+	}
+}
+
 if ( ! function_exists('admin_delete_lecture_note_url'))
 {
 	function admin_delete_lecture_note_url($lecture_note_id)
 	{
-		return site_url("/admin/lecture/".$lecture_note_id."/delete");
+		return site_url("/admin/lecture_note/".$lecture_note_id."/delete");
 	}
 }
 

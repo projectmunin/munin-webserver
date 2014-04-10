@@ -25,11 +25,7 @@
 					<tbody>
 						<?php foreach($courses as $course): ?>
 						<tr>
-							<td>
-								<a href="<?=admin_course_url($course->code,$course->period) ?>">
-									<?=$course->code ?>
-								</a>
-							</td>
+							<td><?=$course->code ?></td>
 							<td><?=$course->period ?></td>
 							<td><?=$course->name ?></td>
 							<td><?=$course->recorded_lectures ?></td>
@@ -40,7 +36,7 @@
 							</td>
 							<td>
 								<a class="detail-link" href="<?=admin_course_url($course->code,$course->period) ?>">
-									<span class="glyphicon glyphicon-arrow-right"></span> Show details
+									<span class="glyphicon glyphicon-arrow-right"></span> Show lectures
 								</a>
 							</td>
 						</tr>

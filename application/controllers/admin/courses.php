@@ -43,6 +43,7 @@ class Courses extends MY_Controller {
 	
 				$this->data['course'] = $this->Lecture_note_library->get_course($code,$period);
 				$this->data['lectures'] = $this->Lecture_note_library->get_lectures($code,$period);
+				$this->data['message'] = $this->session->flashdata('message');
 	
 				$this->_render("admin/course");
 			}

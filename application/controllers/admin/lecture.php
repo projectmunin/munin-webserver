@@ -14,9 +14,11 @@ class Lecture extends MY_Controller {
 			return show_error('You must be an administrator to view this page.');
 		}
 
+		$this->load->model('Lecture_note_library', '', true);
+		$this->load->helper('html');
 	}
 	
-	public function index($id)
+	public function index($id, $action = false)
 	{
 		if (!$this->ion_auth->logged_in())
 		{
@@ -28,19 +30,47 @@ class Lecture extends MY_Controller {
 			//redirect them to the home page because they must be an administrator to view this
 			return show_error('You must be an administrator to view this page.');
 		}
-		else
+		else if(!$action)
 		{
 			$this->title = "Project Munin - Admin";
 			$this->template = "admin";
 			$this->navbar = "navbar_admin";
 			$this->nav_active = "courses";
 
-			$this->load->model('Lecture_note_library', '', true);
 			$this->load->helper('pretty_date');
 			$this->data['lecture'] = $this->Lecture_note_library->get_lecture($id);
 			$this->data['lecture_notes'] = $this->Lecture_note_library->get_lecture_notes($id);
+			$this->data['message'] = $this->session->flashdata('message');
 
 			$this->_render("admin/lecture");
+		}
+		else if($action = "delete")
+		{
+			if($this->input->post('action') == 'delete')
+			{
+				$lecture = $this->Lecture_note_library->get_lecture($id);
+				$deleted = $this->Lecture_note_library->delete_lecture($id);
+				if($deleted)
+				{
+					$this->session->set_flashdata('message',success_message_html('Lecture deleted','Lecture '.$id.' was successfully deleted.',true));
+				}
+				else
+				{
+					$this->session->set_flashdata('message',error_message_html('Error','Lecture '.$id.' could not be deleted.',true));
+				}
+				redirect("admin/courses/".$lecture->course->code."/".$lecture->course->period, 'refresh');
+			}
+			else
+			{
+				$this->title = "Project Munin Admin - Delete lecture";
+				$this->template = "admin";
+				$this->navbar = "navbar_admin";
+				$this->nav_active = "lectures";
+				
+				$this->data['lecture'] = $this->Lecture_note_library->get_lecture($id);
+	
+				$this->_render("admin/lecture/delete");
+			}
 		}
 	}
 }

@@ -166,6 +166,28 @@ class Lecture_note_library extends CI_Model {
 		
 		return $lecture;
 	}
+	
+	function delete_lecture($lecture_id)
+	{
+		if(count($this->db->select()->from('lectures')->where('id', $lecture_id)->get()->result()) > 0)
+		{
+			$query = $this->db->query('
+				DELETE FROM lecture_notes
+				WHERE lecture_id = ?
+			',array($lecture_id));
+			
+			$query = $this->db->query('
+				DELETE FROM lectures
+				WHERE id = ?
+			',array($lecture_id));
+
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
 
 
 	/*****************************
@@ -187,6 +209,29 @@ class Lecture_note_library extends CI_Model {
 		
 		$query = $this->db->get();
 		return $query->result();
+	}
+	
+	function get_lecture_note($lecture_note_id)
+	{
+		$this->db->select()->from('lecture_notes')->where('id', $lecture_note_id);
+		
+		$query = $this->db->get();
+		return $query->row();
+	}
+	
+	function delete_lecture_note($lecture_note_id)
+	{
+		if(count($this->db->select()->from('lecture_notes')->where('id', $lecture_note_id)->get()->result()) > 0)
+		{
+			$query = $this->db->query('
+				DELETE FROM lecture_notes
+				WHERE id = ?
+			',array($lecture_note_id));
+			
+			return true;
+		}
+		
+		return false;
 	}
 	
 	/**
