@@ -7,6 +7,8 @@ class Register extends MY_Controller {
 		parent::__construct(false);
 		
 		$this->form_validation->set_error_delimiters($this->config->item('error_start_delimiter', 'ion_auth'), $this->config->item('error_end_delimiter', 'ion_auth'));
+		
+		$this->load->helper('html');
 	}
 
 	public function index()
@@ -34,9 +36,8 @@ class Register extends MY_Controller {
 		}
 		if ($this->form_validation->run() && $this->ion_auth->register($username, $password, $email, $additional_data))
 		{
-			$this->session->set_flashdata('message', $this->ion_auth->messages());
-			//TODO, redirect instead...
-			$this->_render("register_success");
+			$this->session->set_flashdata('message', success_message_html('Almost done','You will have to confirm your mail to activate your account. Click the link in the email sent to the mail you provided.',true));
+			redirect('auth/login', 'refresh');
 		}
 		else
 		{
