@@ -54,16 +54,23 @@ class Browse extends MY_Controller {
 			'course_list' => $course_list,
 			'search' => $search,
 			),true);
-
-		$this->data = array
-		(
-			'content' => $content,
-			's' => '',
-		);
-
-		$this->title = "Project Munin Search Results ".$search;
-
-		$this->_render("browse");
+			
+		if($this->input->is_ajax_request())
+		{
+			echo $content;
+		}
+		else
+		{			
+			$this->data = array
+			(
+				'content' => $content,
+				's' => '',
+			);
+	
+			$this->title = "Project Munin Search Results ".$search;
+	
+			$this->_render("browse");
+		}
 	}
 }
 

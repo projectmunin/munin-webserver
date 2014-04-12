@@ -7,7 +7,7 @@
 					<?php echo lang('search_course_label');?>
 				</label>
 				<div class="input-group">
-					<?php echo form_input('s', $s, 'class="form-control" placeholder="Course"');?>
+					<?php echo form_input('s', $s, 'id="browse-search-field" class="form-control" placeholder="Course"');?>
 					<span class="input-group-btn">
 						<button type="submit" class="btn btn-primary">
 							<span class="glyphicon glyphicon-search"></span>
@@ -20,7 +20,9 @@
 	</div>
 	<div class="row">
 		<div class="col-xs-12">
-			<?=$content ?>
+			<div id="browse-content">
+				<?=$content ?>
+			</div>
 		</div>
 	</div>
 </div> <!-- /container -->

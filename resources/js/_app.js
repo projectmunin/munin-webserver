@@ -1,6 +1,39 @@
+
+var Site = {
+	replacedContent: null,
+	ajaxSearchRequest: null
+};
 $(document).ready(function() {
 	$('body').removeClass('nojs');
 	$('a.lightbox').nivoLightbox();
+	
+	$('#browse-search-field').keyup(function() {
+		var search = $(this).val();
+		
+		if(search === '')
+		{
+			if(Site.replacedContent)
+			{
+				$("#browse-content").html(Site.replacedContent);
+			}
+		}
+		else
+		{
+			if(Site.searchRequest)
+			{
+				Site.searchRequest.abort();
+			}
+			else
+			{
+				Site.replacedContent = $("#browse-content").html();
+			}
+			
+			Site.searchRequest = $.get("/browse/search", {s:search}, function( data ){
+				$("#browse-content").html(data);
+			});
+		}
+	});
+
 	
 	//TODO Only on admin configure camera unit
 	$("#camera_unit-config-form").submit(function(event) {
