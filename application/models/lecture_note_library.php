@@ -271,6 +271,15 @@ class Lecture_note_library extends CI_Model {
 		
 		return $camera_units;
 	}
+	
+	function get_all_camera_units_count()
+	{
+		$query = $this->db->query('
+				SELECT COUNT(*) AS count
+				FROM camera_units
+			');
+		return $query->row()->count;
+	}
 }
 
 /* End of file lecture_note_library.php */

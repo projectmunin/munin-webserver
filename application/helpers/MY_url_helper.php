@@ -87,9 +87,9 @@ if ( ! function_exists('admin_lecture_url'))
 	}
 }
 
-if ( ! function_exists('admin_camera_units'))
+if ( ! function_exists('admin_camera_units_url'))
 {
-	function admin_camera_units()
+	function admin_camera_units_url()
 	{
 		return site_url("/admin/cameras");
 	}
