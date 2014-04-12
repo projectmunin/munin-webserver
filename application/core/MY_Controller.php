@@ -20,7 +20,7 @@ class MY_Controller extends CI_Controller{
 	protected $keywords = FALSE;
 	protected $author = FALSE;
 	
-	function __construct($login_required = true)
+	function __construct($login_required = true, $admin_required = false)
 	{
 		parent::__construct();
 		
@@ -33,7 +33,12 @@ class MY_Controller extends CI_Controller{
 		if ($login_required && !$this->ion_auth->logged_in())
 		{
 			$this->session->set_flashdata('message', '<div class="alert alert-info">You have to be logged in to view this site</div>');
-			redirect('auth/login', 'refresh');
+			redirect('auth/login?return_to='.uri_string(current_url()), 'refresh');
+		}
+		if ($admin_required && (!$this->ion_auth->logged_in() || !$this->ion_auth->is_admin()))
+		{
+			$this->session->set_flashdata('message', '<div class="alert alert-info">You have to be an administrator to view this page</div>');
+			redirect('auth/login?return_to='.uri_string(current_url()), 'refresh');
 		}
 
 		$this->data["uri_segment_1"] = $this->uri->segment(1);

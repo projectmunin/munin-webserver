@@ -3,17 +3,7 @@
 class Cameras extends MY_Controller {
 	function __construct()
 	{
-		parent::__construct();
-		
-		if (!$this->ion_auth->logged_in())
-		{
-			redirect('auth/login?return_to=admin', 'refresh');
-		}
-		elseif (!$this->ion_auth->is_admin())
-		{
-			return show_error('You must be an administrator to view this page.');
-		}
-
+		parent::__construct(true,true);
 	}
 	
 	public function index($camera_unit_name = false, $action = false)
