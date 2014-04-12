@@ -39,16 +39,20 @@ class Lecture_note_library extends CI_Model {
 
 	function search_courses($search)
 	{
-		//$this->db->select('name, period, code, count(lecture.id)')->from('course');
+		//This is a weird query but its to be able to get the latest period in the period column
 		$query = $this->db->query('
-				SELECT name, period, code, COUNT( lectures.id ) recorded_lectures
-				FROM courses
-				LEFT OUTER JOIN lectures ON courses.period = lectures.course_period
-				AND courses.code = lectures.course_code
-				WHERE name LIKE ? OR code LIKE ?
-				GROUP BY period, code
+				SELECT name,period AS latest_period,code,SUM(recorded_lectures) recorded_lectures FROM 
+				(
+					SELECT name, period, code, COUNT( lectures.id ) recorded_lectures
+					FROM courses
+					LEFT OUTER JOIN lectures ON courses.period = lectures.course_period
+					AND courses.code = lectures.course_code
+					WHERE name LIKE ? OR code LIKE ?
+					GROUP BY code, period
+					ORDER BY period DESC
+				) derp
+				GROUP BY code
 			',array('%'.$search.'%','%'.$search.'%'));
-		//$query = $this->db->get();
 		return $query->result();
 	}
 	
