@@ -2,7 +2,7 @@
 	  <div class="row">
 		<div class="col-xs-12">
 			<ol class="breadcrumb">
-				<li><a href="<?=admin_camera_units() ?>">Camera Units</a></li>
+				<li><a href="<?=admin_camera_units_url() ?>">Camera Units</a></li>
 				<li class="active"><?=$camera_unit->name ?></li>
 			</ol>
 
