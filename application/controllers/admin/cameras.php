@@ -44,7 +44,7 @@ class Cameras extends MY_Controller {
 							log_message('debug', 'Running command: '.$command);
 							exec($command,$echo,$code);
 						}
-						log_message('debug', 'Echo: '.$echo);
+						log_message('debug', 'Echo: '.var_export($echo,true));
 						log_message('debug', 'Exit code: '.$code);
 						echo json_encode(array('exit_code' => $code));
 					}
