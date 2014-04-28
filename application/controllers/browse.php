@@ -15,6 +15,16 @@ class Browse extends MY_Controller {
 	public function index()
 	{
 		$lectures = $this->Lecture_note_library->get_latest_lectures();
+		
+		for($i = 0; $i<count($lectures); $i++)
+		{
+			$lecture = $lectures[$i];
+			if(count($lecture->lecture_notes) < 1)
+			{
+				unset($lectures[$i]);
+			}
+		}
+		
 		$list_data = array
 		(
 			'lectures' => $lectures,

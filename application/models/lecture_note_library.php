@@ -140,7 +140,7 @@ class Lecture_note_library extends CI_Model {
 		//TODO might want to make this in one query
 		$lectures = $this->db->select()->from('lectures')->order_by('startTime', 'desc')->get()->result();
 		foreach ($lectures as $lecture) {
-			$lecture->lecture_notes = $this->db->select()->from('lecture_notes')->where('lecture_id', $lecture->id)->order_by('time','desc')->get()->result();
+			$lecture->lecture_notes = $this->get_lecture_notes($lecture->id);
 			$lecture->course = $this->db->select()->from('courses')->where('code', $lecture->course_code)->where('period', $lecture->course_period)->get()->row();
 		}
 		
@@ -151,10 +151,20 @@ class Lecture_note_library extends CI_Model {
 	{
 		$lectures = $this->db->select()->from('lectures')->where('course_code', $course_code)->where('course_period', $course_period)->order_by('startTime', 'desc')->get()->result();
 		
-		foreach ($lectures as $lecture) {
-			$lecture->lecture_notes = $this->db->select()->from('lecture_notes')->where('lecture_id', $lecture->id)->order_by('time','desc')->get()->result();
-			$lecture->course = $this->db->select()->from('courses')->where('code', $lecture->course_code)->where('period', $lecture->course_period)->get()->row();
+		for($i = 0; $i<count($lectures); $i++) {
+			$lecture = $lectures[$i];
+			$lecture->lecture_notes = $this->get_lecture_notes($lecture->id);
+			if(count($lecture->lecture_notes) < 1)
+			{
+				unset($lectures[$i]);
+			}
+			else
+			{
+				$lecture->course = $this->db->select()->from('courses')->where('code', $lecture->course_code)->where('period', $lecture->course_period)->get()->row();
+			}
 		}
+		
+		$lectures = array_values($lectures);
 
 		return $lectures;
 	}
@@ -209,7 +219,7 @@ class Lecture_note_library extends CI_Model {
 	
 	function get_lecture_notes($lecture_id)
 	{
-		$this->db->select()->from('lecture_notes')->where('lecture_id', $lecture_id);
+		$this->db->select()->from('lecture_notes')->where('lecture_id', $lecture_id)->where('processed', '1');
 		
 		$query = $this->db->get();
 		return $query->result();
@@ -245,7 +255,7 @@ class Lecture_note_library extends CI_Model {
 	 */
 	function get_latest_notes($count = 10)
 	{
-		$this->db->select()->from('lecture_notes')->limit($count)->order_by('time','desc');
+		$this->db->select()->from('lecture_notes')->where('processed', '1')->limit($count)->order_by('time','desc');
 		
 		$query = $this->db->get();
 		return $query->result();

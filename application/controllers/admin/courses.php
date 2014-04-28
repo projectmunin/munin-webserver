@@ -27,6 +27,7 @@ class Courses extends MY_Controller {
 			}
 			else if(!$action)
 			{
+			
 				$this->title = "Project Munin - Admin";
 				$this->template = "admin";
 				$this->navbar = "navbar_admin";
@@ -61,7 +62,7 @@ class Courses extends MY_Controller {
 					$this->nav_active = "courses";
 					
 					$this->data['course'] = $this->Lecture_note_library->get_course($code,$period);
-		
+
 					$this->_render("admin/course/delete");
 				}
 			}
