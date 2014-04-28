@@ -30,7 +30,16 @@ class Cameras extends MY_Controller {
 				{
 					if($this->input->post())
 					{
-						exec("export DYLD_LIBRARY_PATH=''; cd external_services; java -Djava.awt.headless=true CamConfig",$echo,$code);
+						$command = "export DYLD_LIBRARY_PATH=''; cd /home/test/projectMunin/source/networkModule; java -Djava.awt.headless=true NetworkServerSendConfigs -r ".$this->input->post("name")." -l ".$this->input->post("location");
+						
+						if($this->input->post("server_password"))
+						{
+							exec($command." -p ".$this->input->post("server_password"),$echo,$code);
+						}
+						else
+						{
+							exec($command,$echo,$code);
+						}
 						echo json_encode(array('exit_code' => $code));
 					}
 				}

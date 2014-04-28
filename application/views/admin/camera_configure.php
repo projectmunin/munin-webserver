@@ -6,7 +6,7 @@
 				<li class="active"><?=$camera_unit->name ?></li>
 			</ol>
 
-			<span class="type">Camera</span>
+			<span class="type">Camera Unit</span>
 			<h1><?=$camera_unit->name ?></h1>
 			<div id="camera_unit-config-status" class="alert alert-info" style="display:none">
 				
@@ -26,13 +26,13 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="name" class="col-sm-2 control-label">Name</label>
+					<label for="name" class="col-sm-2 control-label">Camera Unit Name</label>
 					<div class="col-sm-10">
 						<input type="text" class="form-control" name="name" placeholder="Name" value="<?=$camera_unit->name ?>">
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="ip-address" class="col-sm-2 control-label">IP Address</label>
+					<label for="ip-address" class="col-sm-2 control-label">Camera Unit IP </label>
 					<div class="col-sm-10">
 						<span class="form-control"><?=$camera_unit->ip_address; ?></span>
 					</div>
@@ -46,7 +46,13 @@
 				<div class="form-group">
 					<label for="location" class="col-sm-2 control-label">Password</label>
 					<div class="col-sm-10">
-						<input type="text" class="form-control" name="location" placeholder="Password" value="<?=$camera_unit->password ?>">
+						<span class="form-control"><?=$camera_unit->password ?></span>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="location" class="col-sm-2 control-label">Server Password</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" name="server_password" placeholder="Sets a password for the test account on this server" value="">
 					</div>
 				</div>
 				<div class="form-group">
