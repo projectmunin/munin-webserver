@@ -42,7 +42,8 @@ $(document).ready(function() {
 		messagediv.html('setting config, wait...');
 		
 		$.post( "/admin/cameras/cam1/set_config", $("#camera_unit-config-form").serialize(),function( data ){
-			window.location.href = window.location.href.split( '?' )[0] + "?message=" + data.exit_code;
+			alert(data);
+			//window.location.href = window.location.href.split( '?' )[0] + "?message=" + data.exit_code;
 		},"json");
 		
 		event.preventDefault();
