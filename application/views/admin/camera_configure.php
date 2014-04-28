@@ -18,7 +18,7 @@
 					<strong>Yay!</strong> Exit code: <?=$message ?>
 			</div>
 			<?php endif; ?>
-			<form id="camera_unit-config-form" class="form-horizontal" role="form">
+			<form id="camera_unit-config-form" class="form-horizontal" role="form" method="post">
 				<div class="form-group">
 					<label for="name" class="col-sm-2 control-label">Status</label>
 					<div class="col-sm-10">
