@@ -12,11 +12,7 @@
 				
 			</div>
 			<?php if($message != ''): ?>
-			<div class="alert alert-success alert-dismissable">
-				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-
-					<strong>Yay!</strong> Exit code: <?=$message ?>
-			</div>
+				<?=$message ?>
 			<?php endif; ?>
 			<form id="camera_unit-config-form" class="form-horizontal" role="form" method="post">
 				<div class="form-group">

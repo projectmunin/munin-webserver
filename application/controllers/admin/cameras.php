@@ -4,6 +4,10 @@ class Cameras extends MY_Controller {
 	function __construct()
 	{
 		parent::__construct(true,true);
+		
+		$this->load->model('Lecture_note_library', '', true);
+		
+		$this->load->helper('html');
 	}
 	
 	public function index($camera_unit_name = false, $action = false)
@@ -13,7 +17,7 @@ class Cameras extends MY_Controller {
 		$this->navbar = "navbar_admin";
 		$this->nav_active = "cameras";
 
-		$this->load->model('Lecture_note_library', '', true);
+		
 		
 		if(!$camera_unit_name)
 		{
@@ -61,7 +65,15 @@ class Cameras extends MY_Controller {
 			}
 			else
 			{
-				$this->data['message'] = (string)$this->input->get('message');
+				$this->data['message'] = '';
+				if($this->input->get('message') == '0')
+				{
+					$this->data['message'] = success_message_html("Success",lang('admin_camera_config_update_'.$this->input->get('message')),true);
+				}
+				elseif($this->input->get('message') != '')
+				{
+					$this->data['message'] = error_message_html("Error",lang('admin_camera_config_update_'.$this->input->get('message')),true);
+				}
 				$this->data['camera_unit'] = $this->Lecture_note_library->get_camera_unit($camera_unit_name);
 				$this->_render("admin/camera_configure");
 			}
