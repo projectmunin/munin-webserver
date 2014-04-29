@@ -12,7 +12,7 @@
 			<span class="lecture-row-course-code"><?=$lecture->course->code ?></span>
 			<span class="lecture-row-course-name"><?=$lecture->course->name ?></span>
 			<a href="<?=course_url($lecture->course->code,$lecture->course->period)?>" class="lecture-row-course-link"><span></span></a>
-			<a href="<?=lecture_url($lecture->id) ?>" class="lecture-row-meta"><?=count($lecture->lecture_notes) ?> recorded lecture notes</span>
+			<a href="<?=lecture_url($lecture->id) ?>" class="lecture-row-meta"><?=count($lecture->lecture_notes) ?> recorded lecture notes</a>
 		</div>
 	</div>
 <?php endforeach; ?>
