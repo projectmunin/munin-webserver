@@ -66,7 +66,7 @@ class Cameras extends MY_Controller {
 			else
 			{
 				$this->data['message'] = '';
-				if($this->input->get('message') == '0')
+				if($this->input->get('message') === '0')
 				{
 					$this->data['message'] = success_message_html("Success",lang('admin_camera_config_update_'.$this->input->get('message')),true);
 				}
