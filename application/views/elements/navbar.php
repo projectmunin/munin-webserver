@@ -6,7 +6,9 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/">Tavlan</a>
+		  <a class="navbar-brand" href="/">
+			  <?php include(IMAGES.'tavlan.svg'); ?>
+		  </a>
         </div>
         <div class="navbar-collapse collapse">
           <?php /* echo form_open("auth/login",array('class' => 'navbar-form navbar-right', 'role' => 'form'));?>
