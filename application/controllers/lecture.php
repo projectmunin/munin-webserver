@@ -9,7 +9,6 @@ class Lecture extends MY_Controller {
 		$this->load->helper('url');
 		$this->load->helper('language');
 		$this->load->helper('pretty_date');
-		$this->lang->load('home');
 	}
 
 	public function index($id = FALSE)

@@ -8,7 +8,6 @@ class Welcome extends MY_Controller {
 		$this->load->model('Lecture_note_library', '', true);
 		$this->load->helper('url');
 		$this->load->helper('language');
-		$this->lang->load('home');
 	}
 
 	public function index()
