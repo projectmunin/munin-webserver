@@ -15,6 +15,9 @@
 
 @footer-height: 180px;
 
+@lecture_note_thumb_width: 445px;
+@lecture_note_thumb_height: 100px;
+
 /* ==========================================================================
    General
    ========================================================================== */
@@ -198,15 +201,20 @@ body.auth
 	width: 100%;
 	height: 100px;
 	overflow: hidden;
-	text-align: center;
+	//text-align: center;
 	margin-right: 20px;
 	background: @gray-darker;
 }
 
 .lecture-thumb img
 {
-	width: auto;
-	height: 100%;
+    left: 50%;
+    margin-left: -(@lecture_note_thumb_width/2);
+    margin-top: -(@lecture_note_thumb_height/2);
+    position: relative;
+    top: 50%;
+    width: @lecture_note_thumb_width;
+	height: @lecture_note_thumb_height;
 }
 
 

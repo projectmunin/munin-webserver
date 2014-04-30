@@ -3,7 +3,7 @@
 		<div class="col-sm-3 col-md-5">
 			<div class="lecture-thumb">
 				<a href="<?=lecture_url($lecture->id) ?>">
-					<img class="lecture-thumb-img" src="<?=base_url(LECTURE_NOTES.$lecture->lecture_notes[0]->image) ?>" />
+					<img class="lecture-thumb-img" src="<?=base_url(image_thumb(LECTURE_NOTES.$lecture->lecture_notes[0]->image,445,100)) ?>" />
 				</a>
 			</div>
 		</div>

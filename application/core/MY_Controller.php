@@ -27,6 +27,7 @@ class MY_Controller extends CI_Controller{
 		$this->load->library('ion_auth');
 		$this->lang->load('auth');
 		$this->load->helper('language');
+		$this->load->helper('image');
 		$this->lang->load('projectmunin');
 		$this->load->library('form_validation');
 		
