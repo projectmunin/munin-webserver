@@ -54,6 +54,7 @@ class Browse extends MY_Controller {
 
 		$list_data = array
 		(
+			's' => $search,
 			'courses' => $search_results,
 		);
 

@@ -3,8 +3,8 @@
 $lang['home_welcome'] = "Welcome!";
 $lang['home_welcome_paragraph'] = "Lorem ipsum dolor sit amet";
 
-$lang['search_course_label'] = "Course";
-$lang['search_course_placeholder'] = "Search for course name or course code (e.g. TDA519)";
+$lang['search_course_label'] = "Find your course";
+$lang['search_course_placeholder'] = "Type a course name or course code (e.g. TDA519)";
 $lang['search_period_label'] = "Period";
 $lang['search_submit'] = "Search";
 
