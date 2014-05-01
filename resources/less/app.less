@@ -32,7 +32,6 @@ body
 {
 	/* This is also changed via javascript on resize */
 	margin-bottom: @footer-height+20px;
-	margin-top: 60px;
 	font-weight: 200;
 }
 
@@ -63,6 +62,11 @@ a.detail-link:hover
 /* ==========================================================================
    Navbar
    ========================================================================== */
+
+.navbar
+{
+	border-radius: 0px;
+}
 
 #navbar-main .navbar-brand
 {
@@ -99,7 +103,7 @@ a.detail-link:hover
    ========================================================================== */
 #browse-content h2
 {
-	font-weight: 200;
+	font-weight: 400;
 	color: #333;
 }
 #browse-content h2 .search-term
@@ -303,30 +307,56 @@ a.course-row-link:hover
 	.clearfix;
 	padding-bottom: 20px;
 	padding-top: 20px;
-	border-top: 3px solid #eee;
 }
 
-.lecture-row div:nth-child(2)
-{	@media(@sm)
+.lecture-thumbs
+{
+	width: 100%;
+}
+.lecture-thumbs td
+{
+	padding-right: 10px;
+}
+
+.lecture-thumbs tr td:nth-child(3), .lecture-thumbs tr td:nth-child(4)
+{
+	display: none;
+}
+
+@media(@sm)
+{
+	.lecture-thumbs tr td:nth-child(3)
 	{
-		padding-top: 14px;
+		display: table-cell;
 	}
 }
+
+@media(@md)
+{
+	.lecture-thumbs tr td:nth-child(4)
+	{
+		display: table-cell;
+	}
+}
+
 
 .lecture-thumb
 {
-	float: left;
 	width: 100%;
-	height: @lecture_note_thumb_height+10px;
+	height: @lecture_note_thumb_height;
 	overflow: hidden;
-	margin-right: 20px;
+	position: relative;
 	background: @gray-darker;
-	border: 5px solid #111;
+	border: 0px solid #111;
 	border-radius: 5px;
-	@media(@sm-max)
-	{
-		margin-bottom: 20px;
-	}
+}
+
+.lecture-thumb a
+{
+	width: 100%;
+	height: 100%;
+	display: block;
+	overflow: hidden;
 }
 
 .lecture-thumb img
@@ -334,7 +364,7 @@ a.course-row-link:hover
     left: 50%;
     margin-left: -(@lecture_note_thumb_width/2);
     margin-top: -(@lecture_note_thumb_height/2);
-    position: relative;
+    position: absolute;
     top: 50%;
     width: @lecture_note_thumb_width;
 	height: @lecture_note_thumb_height;
@@ -370,6 +400,7 @@ a.course-row-link:hover
 .lecture-row-meta
 {
 	display: block;
+	margin-bottom: 20px;
 }
 
 .lecture-row-course-link span
@@ -389,11 +420,16 @@ a.course-row-link:hover
 
 .lecture-note-row
 {
-	padding: 10px;
-	border-radius: 10px;
-	margin: 20px 0px;
+	padding: 2px;
+	border-radius: 3px;
 	background: #111;
 	color: #fff;
+	margin: 20px 0px;
+	@media(@sm)
+	{
+		padding: 10px;
+		border-radius: 6px;
+	}
 }
 
 .lecture-note-row img
@@ -403,16 +439,21 @@ a.course-row-link:hover
 
 .lecture-note-row .meta
 {
-	font-size: 14px;
 	font-weight: 200;
+	padding: 0px 5px;
 	text-align: right;
 	display: block;
-	margin-top: 10px;
+	font-size: 10px;
+	@media(@sm)
+	{
+		padding: 0px;
+		padding-top: 10px;
+		font-size: 14px;
+	}
 }
 .lecture-note-row .meta .date
 {
 	display: inline;
-	font-size: 14px;
 	font-weight: 800;
 }
 
