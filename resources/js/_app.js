@@ -124,4 +124,9 @@ $(document).ready(function() {
 		});
 	});
 	
+	$('body').css('margin-bottom', $('#footer').height()+20);
+	$(window).resize(function() {
+		$('body').css('margin-bottom', $('#footer').height()+20);
+	});
+	
 });

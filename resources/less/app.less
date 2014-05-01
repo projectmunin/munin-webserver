@@ -30,7 +30,8 @@ html
 
 body
 {
-	margin-bottom: @footer-height;
+	/* This is also changed via javascript on resize */
+	margin-bottom: @footer-height+20px;
 	margin-top: 60px;
 	font-weight: 200;
 }
@@ -43,10 +44,6 @@ h1,h2,h3,h4,h5,h6
 /* ==========================================================================
    Main content
    ========================================================================== */
-#main .container
-{
-	margin-top: 20px;
-}
 
 a.delete-link
 {
