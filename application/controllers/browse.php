@@ -28,20 +28,27 @@ class Browse extends MY_Controller {
 		(
 			'lectures' => $lectures,
 		);
-
+		
 		$lecture_list = $this->load->view("elements/lecture_list",$list_data,true);
-
-		$latest_lectures = $this->load->view("elements/latest_lectures",array('lecture_list' => $lecture_list),true);
-
-		$this->data = array
-		(
-			'content' => $latest_lectures,
-			's' => '',
-		);
-
-		$this->title = "Project Munin";
-
-		$this->_render("browse");
+		
+		if($this->input->is_ajax_request())
+		{
+			echo $lecture_list;
+		}
+		else
+		{
+			$latest_lectures = $this->load->view("elements/latest_lectures",array('lecture_list' => $lecture_list),true);
+	
+			$this->data = array
+			(
+				'content' => $latest_lectures,
+				's' => '',
+			);
+	
+			$this->title = "Project Munin";
+	
+			$this->_render("browse");
+		}
 	}
 
 	function search()
@@ -54,7 +61,6 @@ class Browse extends MY_Controller {
 
 		$list_data = array
 		(
-			's' => $search,
 			'courses' => $search_results,
 		);
 
@@ -74,7 +80,7 @@ class Browse extends MY_Controller {
 			$this->data = array
 			(
 				'content' => $content,
-				's' => '',
+				's' => $search,
 			);
 	
 			$this->title = "Project Munin Search Results ".$search;

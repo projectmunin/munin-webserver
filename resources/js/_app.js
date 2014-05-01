@@ -7,29 +7,55 @@ $(document).ready(function() {
 	$('body').removeClass('nojs');
 	$('a.lightbox').nivoLightbox();
 	
+	var spinner_opts = {
+			lines: 8, // The number of lines to draw
+			length: 3, // The length of each line
+			width: 2, // The line thickness
+			radius: 3, // The radius of the inner circle
+			corners: 1, // Corner roundness (0..1)
+			rotate: 0, // The rotation offset
+			direction: 1, // 1: clockwise, -1: counterclockwise
+			color: '#000', // #rgb or #rrggbb or array of colors
+			speed: 1, // Rounds per second
+			trail: 60, // Afterglow percentage
+			shadow: false, // Whether to render a shadow
+			hwaccel: false, // Whether to use hardware acceleration
+			className: 'jsspinner', // The CSS class to assign to the spinner
+			zIndex: 2e9, // The z-index (defaults to 2000000000)
+		};
+		
+		$("#browse-search-loading-spinner").each(function(){
+			var spinner = new Spinner(spinner_opts).spin();
+			$(this).append($(spinner.el));
+		});
+	
 	$('#browse-search-field').keyup(function() {
 		var search = $(this).val();
 		
+		$('#browse-search-loading-spinner').addClass('running');
+		
 		if(search === '')
 		{
-			if(Site.replacedContent)
+			if(Site.ajaxSearchRequest)
 			{
-				$("#browse-content").html(Site.replacedContent);
+				Site.ajaxSearchRequest.abort();
 			}
+			
+			Site.ajaxSearchRequest = $.get("/browse", {s:search}, function( data ){
+				$("#browse-content").html(data);
+				$('#browse-search-loading-spinner').removeClass('running');
+			});
 		}
 		else
 		{
-			if(Site.searchRequest)
+			if(Site.ajaxSearchRequest)
 			{
-				Site.searchRequest.abort();
-			}
-			else
-			{
-				Site.replacedContent = $("#browse-content").html();
+				Site.ajaxSearchRequest.abort();
 			}
 			
-			Site.searchRequest = $.get("/browse/search", {s:search}, function( data ){
+			Site.ajaxSearchRequest = $.get("/browse/search", {s:search}, function( data ){
 				$("#browse-content").html(data);
+				$('#browse-search-loading-spinner').removeClass('running');
 			});
 		}
 	});

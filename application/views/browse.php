@@ -18,6 +18,7 @@
 			</div>
 		<?php echo form_close();?>
 	</div>
+	<div id="browse-search-loading-spinner"></div>
 	<div class="row">
 		<div class="col-xs-12">
 			<div id="browse-content">
