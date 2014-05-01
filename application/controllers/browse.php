@@ -31,14 +31,15 @@ class Browse extends MY_Controller {
 		
 		$lecture_list = $this->load->view("elements/lecture_list",$list_data,true);
 		
+		
+		$latest_lectures = $this->load->view("elements/latest_lectures",array('lecture_list' => $lecture_list),true);
+		
 		if($this->input->is_ajax_request())
 		{
-			echo $lecture_list;
+			echo $latest_lectures;
 		}
 		else
 		{
-			$latest_lectures = $this->load->view("elements/latest_lectures",array('lecture_list' => $lecture_list),true);
-	
 			$this->data = array
 			(
 				'content' => $latest_lectures,

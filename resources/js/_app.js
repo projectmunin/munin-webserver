@@ -24,7 +24,7 @@ $(document).ready(function() {
 			zIndex: 2e9, // The z-index (defaults to 2000000000)
 		};
 		
-		$("#browse-search-loading-spinner").each(function(){
+		$("#browse-search-icon .spinner").each(function(){
 			var spinner = new Spinner(spinner_opts).spin();
 			$(this).append($(spinner.el));
 		});
@@ -32,7 +32,7 @@ $(document).ready(function() {
 	$('#browse-search-field').keyup(function() {
 		var search = $(this).val();
 		
-		$('#browse-search-loading-spinner').addClass('running');
+		$('#browse-search-icon').addClass('loading');
 		
 		if(search === '')
 		{
@@ -43,7 +43,7 @@ $(document).ready(function() {
 			
 			Site.ajaxSearchRequest = $.get("/browse", {s:search}, function( data ){
 				$("#browse-content").html(data);
-				$('#browse-search-loading-spinner').removeClass('running');
+				$('#browse-search-icon').removeClass('loading');
 			});
 		}
 		else
@@ -55,7 +55,7 @@ $(document).ready(function() {
 			
 			Site.ajaxSearchRequest = $.get("/browse/search", {s:search}, function( data ){
 				$("#browse-content").html(data);
-				$('#browse-search-loading-spinner').removeClass('running');
+				$('#browse-search-icon').removeClass('loading');
 			});
 		}
 	});

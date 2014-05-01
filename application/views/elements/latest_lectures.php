@@ -1,2 +1,2 @@
-<h1>Latest lectures</h1>
+<h2>Latest lectures</h2>
 <?=$lecture_list ?>
