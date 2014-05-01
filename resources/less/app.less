@@ -18,6 +18,9 @@
 @lecture_note_thumb_width: 445px;
 @lecture_note_thumb_height: 100px;
 
+@text-color: #444;
+@white-bg: #fff;
+
 /* ==========================================================================
    General
    ========================================================================== */
@@ -33,6 +36,8 @@ body
 	/* This is also changed via javascript on resize */
 	margin-bottom: @footer-height+20px;
 	font-weight: 200;
+	color: @text-color;
+	background: @white-bg;
 }
 
 h1,h2,h3,h4,h5,h6
@@ -189,11 +194,27 @@ body.auth
 #auth-content
 {
 	margin: 0px auto;
-	max-width: 500px;
+	max-width: 600px;
 	width: 100%;
-	background-color: white;
-	border-radius: 10px;
+	background-color: @white-bg;
+	border-radius: 0px 0px 30px 30px;
+	border: 4px solid #222;
+	border-top: 0px;
 	padding: 40px;
+}
+/*
+#auth-content #logo
+{
+	background: #222;
+	max-width: 600px;
+	margin: -40px -40px 0px -40px;
+	padding: 20px 0px;
+}
+*/
+#auth-content #logo svg
+{
+	width: 100%;
+	height: 60px;
 }
 
 /* ==========================================================================

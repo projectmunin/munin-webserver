@@ -1,5 +1,10 @@
 <div class="row">
 <div class="col-xs-12">
+
+<div id="logo">
+	<?php include(IMAGES.'tavlan.svg'); ?>
+</div>
+
 <h1><?php echo lang('login_heading');?></h1>
 <p><?php echo lang('login_subheading');?></p>
 
