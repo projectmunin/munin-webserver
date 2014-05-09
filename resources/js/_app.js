@@ -29,6 +29,8 @@ $(document).ready(function() {
 			$(this).append($(spinner.el));
 		});
 	
+	$('#browse-search-field').focus();
+	
 	$('#browse-search-field').keyup(function() {
 		var search = $(this).val();
 		
