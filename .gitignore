@@ -11,6 +11,3 @@ application/logs/*
 node_modules
 
 resources/thumbs/*
-
-resources/js/scripts.min.js
-resources/css/main.min.css
