@@ -219,7 +219,7 @@ class Lecture_note_library extends CI_Model {
 	
 	function get_lecture_notes($lecture_id)
 	{
-		$this->db->select()->from('lecture_notes')->where('lecture_id', $lecture_id)->where('processed', '1');
+		$this->db->select()->from('lecture_notes')->where('lecture_id', $lecture_id)->where('processed', '1')->order_by('time','desc');
 		
 		$query = $this->db->get();
 		return $query->result();
